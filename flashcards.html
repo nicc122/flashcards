@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulary Flashcards</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 16px;
+    color: #1a1a1a;
+  }
+
+  h1 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 16px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .mode-bar {
+    display: flex;
+    background: #e0e0e0;
+    border-radius: 8px;
+    padding: 3px;
+    margin-bottom: 20px;
+    gap: 2px;
+  }
+  .mode-btn {
+    flex: 1;
+    padding: 7px 18px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #666;
+    transition: all 0.15s;
+  }
+  .mode-btn.active {
+    background: #fff;
+    color: #1a1a1a;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  }
+
+  .progress-wrap {
+    width: 100%;
+    max-width: 480px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #888;
+  }
+  .progress-bar {
+    width: 100%;
+    max-width: 480px;
+    height: 4px;
+    background: #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: #4f9cf9;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+
+  /* FLASHCARD MODE */
+  .card-wrap {
+    width: 100%;
+    max-width: 480px;
+    perspective: 1000px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  .card-inner {
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+    transform-style: preserve-3d;
+    transition: transform 0.45s ease;
+  }
+  .card-inner.flipped { transform: rotateY(180deg); }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    min-height: 200px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 28px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  }
+  .card-front { background: #fff; }
+  .card-back  { background: #eef5ff; transform: rotateY(180deg); }
+
+  .card-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 12px;
+  }
+  .card-term { font-size: 1.6rem; font-weight: 700; color: #1a1a1a; line-height: 1.2; }
+  .card-def  { font-size: 1.1rem; color: #444; line-height: 1.5; }
+  .card-hint { margin-top: 16px; font-size: 0.75rem; color: #bbb; }
+
+  .fc-nav { display: flex; gap: 10px; margin-bottom: 16px; }
+  .fc-nav button {
+    flex: 1;
+    max-width: 140px;
+    padding: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #555;
+    transition: all 0.15s;
+  }
+  .fc-nav button:hover { border-color: #4f9cf9; color: #4f9cf9; }
+
+  /* MULTIPLE CHOICE MODE */
+  .mc-question {
+    width: 100%;
+    max-width: 480px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    text-align: center;
+  }
+  .mc-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 10px;
+  }
+  .mc-term { font-size: 1.5rem; font-weight: 700; color: #1a1a1a; line-height: 1.3; }
+
+  .mc-options { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+  .mc-option {
+    width: 100%;
+    padding: 13px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.95rem;
+    text-align: left;
+    transition: all 0.15s;
+    color: #1a1a1a;
+  }
+  .mc-option:hover:not(:disabled) { border-color: #4f9cf9; background: #f0f7ff; }
+  .mc-option.correct { border-color: #22c55e; background: #f0fdf4; color: #15803d; font-weight: 600; }
+  .mc-option.wrong   { border-color: #ef4444; background: #fef2f2; color: #b91c1c; }
+  .mc-option:disabled { cursor: default; }
+
+  /* SCORE PANEL */
+  .score-panel {
+    width: 100%;
+    max-width: 480px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  }
+  .score-emoji { font-size: 3rem; margin-bottom: 12px; }
+  .score-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; }
+  .score-sub   { font-size: 0.95rem; color: #666; margin-bottom: 24px; }
+  .restart-btn {
+    padding: 12px 32px;
+    background: #4f9cf9;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .restart-btn:hover { background: #3b82f6; }
+
+  .error-msg {
+    max-width: 400px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px;
+    text-align: center;
+    color: #666;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+</style>
+</head>
+<body>
+
+<h1>Vocabulary Practice</h1>
+
+<div class="mode-bar">
+  <button class="mode-btn active" id="btn-fc" onclick="setMode('flashcard')">Flashcards</button>
+  <button class="mode-btn"        id="btn-mc" onclick="setMode('mc')">Multiple Choice</button>
+</div>
+
+<div class="progress-wrap">
+  <span id="prog-label">0 / 0</span>
+  <span id="score-label" style="display:none"></span>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+
+<div id="app"></div>
+
+<script>
+const DEMO = [
+  { term: "to iron out",            def: "to resolve problems or difficulties" },
+  { term: "bottleneck",             def: "a point of congestion that slows a process" },
+  { term: "to sign off on",         def: "to give official approval to something" },
+  { term: "turnaround time",        def: "the time needed to complete a task" },
+  { term: "to get the ball rolling", def: "to start a process or activity" }
+];
+
+function loadVocab() {
+  try {
+    const raw = new URLSearchParams(window.location.search).get('data');
+    if (raw) {
+      const parsed = JSON.parse(atob(raw));
+      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+    }
+  } catch(e) {}
+  return DEMO;
+}
+
+const vocab = loadVocab();
+
+let mode = 'flashcard';
+let fcIndex = 0, fcFlipped = false;
+let mcIndex = 0, mcScore  = 0, mcAnswered = false;
+
+function setMode(m) {
+  mode = m;
+  fcIndex = 0; fcFlipped = false;
+  mcIndex = 0; mcScore = 0; mcAnswered = false;
+  document.getElementById('btn-fc').classList.toggle('active', m === 'flashcard');
+  document.getElementById('btn-mc').classList.toggle('active', m === 'mc');
+  document.getElementById('score-label').style.display = 'none';
+  render();
+}
+
+function updateProgress(current, total, scoreText) {
+  document.getElementById('progress-fill').style.width = (total > 0 ? (current/total)*100 : 0) + '%';
+  document.getElementById('prog-label').textContent = current + ' / ' + total;
+  const sl = document.getElementById('score-label');
+  if (scoreText !== undefined) { sl.style.display = ''; sl.textContent = scoreText; }
+}
+
+function render() {
+  if (!vocab || vocab.length === 0) {
+    document.getElementById('app').innerHTML = '<div class="error-msg">No vocabulary found. Check the URL parameter.</div>';
+    return;
+  }
+  mode === 'flashcard' ? renderFC() : renderMC();
+}
+
+/* ── Flashcard ── */
+function renderFC() {
+  const app = document.getElementById('app');
+  if (fcIndex >= vocab.length) {
+    updateProgress(vocab.length, vocab.length);
+    app.innerHTML = `<div class="score-panel">
+      <div class="score-emoji">&#127881;</div>
+      <div class="score-title">All done!</div>
+      <div class="score-sub">You reviewed all ${vocab.length} terms.</div>
+      <button class="restart-btn" onclick="fcRestart()">Go again</button>
+    </div>`;
+    return;
+  }
+  updateProgress(fcIndex, vocab.length);
+  const item = vocab[fcIndex];
+  app.innerHTML = `<div class="card-wrap" onclick="flipCard()">
+    <div class="card-inner" id="ci">
+      <div class="card-face card-front">
+        <div class="card-label">Term</div>
+        <div class="card-term">${esc(item.term)}</div>
+        <div class="card-hint">tap to reveal</div>
+      </div>
+      <div class="card-face card-back">
+        <div class="card-label">Definition</div>
+        <div class="card-def">${esc(item.def)}</div>
+      </div>
+    </div>
+  </div>
+  <div class="fc-nav">
+    <button onclick="fcPrev(event)">&#8592; Back</button>
+    <button onclick="fcNext(event)">Next &#8594;</button>
+  </div>`;
+  if (fcFlipped) document.getElementById('ci').classList.add('flipped');
+}
+
+function flipCard() { fcFlipped = !fcFlipped; const ci = document.getElementById('ci'); if(ci) ci.classList.toggle('flipped', fcFlipped); }
+function fcNext(e)  { e.stopPropagation(); fcIndex++; fcFlipped = false; renderFC(); }
+function fcPrev(e)  { e.stopPropagation(); if(fcIndex>0){fcIndex--; fcFlipped=false; renderFC();} }
+function fcRestart(){ fcIndex=0; fcFlipped=false; renderFC(); }
+
+/* ── Multiple Choice ── */
+function renderMC() {
+  const app = document.getElementById('app');
+  if (mcIndex >= vocab.length) {
+    const pct   = Math.round((mcScore/vocab.length)*100);
+    const emoji = pct===100?'&#127942;': pct>=60?'&#128077;':'&#128218;';
+    const msg   = pct===100?'Perfect score!': pct>=60?'Good job!':'Keep practising!';
+    updateProgress(vocab.length, vocab.length, '&#10003; ' + mcScore + '/' + vocab.length);
+    app.innerHTML = `<div class="score-panel">
+      <div class="score-emoji">${emoji}</div>
+      <div class="score-title">${msg}</div>
+      <div class="score-sub">You got ${mcScore} out of ${vocab.length} correct (${pct}%).</div>
+      <button class="restart-btn" onclick="mcRestart()">Try again</button>
+    </div>`;
+    return;
+  }
+  if (mcIndex > 0) updateProgress(mcIndex, vocab.length, '&#10003; ' + mcScore + '/' + mcIndex);
+  else updateProgress(0, vocab.length);
+
+  const item    = vocab[mcIndex];
+  const options = shuffle([item, ...shuffle(vocab.filter(v=>v!==item)).slice(0,3)]);
+  const correctIdx = options.indexOf(item);
+
+  app.innerHTML = `<div class="mc-question">
+    <div class="mc-label">What does this mean?</div>
+    <div class="mc-term">${esc(item.term)}</div>
+  </div>
+  <div class="mc-options">
+    ${options.map((o,i)=>`<button class="mc-option" id="opt-${i}" onclick="checkAnswer(${i},${correctIdx})">${esc(o.def)}</button>`).join('')}
+  </div>`;
+}
+
+function checkAnswer(chosen, correct) {
+  if (mcAnswered) return;
+  mcAnswered = true;
+  const btns = document.querySelectorAll('.mc-option');
+  btns.forEach(b => b.disabled = true);
+  btns[chosen].classList.add(chosen===correct ? 'correct' : 'wrong');
+  if (chosen !== correct) btns[correct].classList.add('correct');
+  if (chosen === correct) mcScore++;
+  setTimeout(() => { mcIndex++; mcAnswered=false; renderMC(); }, 1100);
+}
+
+function mcRestart(){ mcIndex=0; mcScore=0; mcAnswered=false; renderMC(); }
+
+function shuffle(arr) {
+  const a=[...arr]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a;
+}
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+render();
+</script>
+</body>
+</html>
