@@ -90,7 +90,7 @@
   .card-inner {
     position: relative;
     width: 100%;
-    min-height: 200px;
+    min-height: 110px;
     transform-style: preserve-3d;
     transition: transform 0.45s ease;
   }
@@ -99,7 +99,7 @@
   .card-face {
     position: absolute;
     width: 100%;
-    min-height: 200px;
+    min-height: 110px;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     border-radius: 14px;
@@ -107,7 +107,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 32px 28px;
+    padding: 20px 28px;
     text-align: center;
     box-shadow: 0 4px 16px rgba(0,0,0,0.10);
   }
@@ -122,8 +122,8 @@
     color: #aaa;
     margin-bottom: 12px;
   }
-  .card-term { font-size: 1.6rem; font-weight: 700; color: #1a1a1a; line-height: 1.2; }
-  .card-def  { font-size: 1.1rem; color: #444; line-height: 1.5; }
+  .card-term { font-size: 1.3rem; font-weight: 700; color: #1a1a1a; line-height: 1.2; white-space: nowrap; }
+  .card-def  { font-size: 1.3rem; font-weight: 700; color: #1a1a1a; line-height: 1.2; white-space: nowrap; }
   .card-hint { margin-top: 16px; font-size: 0.75rem; color: #bbb; }
 
   .fc-nav { display: flex; gap: 10px; margin-bottom: 16px; }
@@ -304,13 +304,13 @@ function renderFC() {
   app.innerHTML = `<div class="card-wrap" onclick="flipCard()">
     <div class="card-inner" id="ci">
       <div class="card-face card-front">
-        <div class="card-label">Term</div>
-        <div class="card-term">${esc(item.term)}</div>
+        <div class="card-label">Definition</div>
+        <div class="card-def">${esc(item.def)}</div>
         <div class="card-hint">tap to reveal</div>
       </div>
       <div class="card-face card-back">
-        <div class="card-label">Definition</div>
-        <div class="card-def">${esc(item.def)}</div>
+        <div class="card-label">Term</div>
+        <div class="card-term">${esc(item.term)}</div>
       </div>
     </div>
   </div>
@@ -350,11 +350,10 @@ function renderMC() {
   const correctIdx = options.indexOf(item);
 
   app.innerHTML = `<div class="mc-question">
-    <div class="mc-label">What does this mean?</div>
-    <div class="mc-term">${esc(item.term)}</div>
+    <div class="mc-term">${esc(item.def)}</div>
   </div>
   <div class="mc-options">
-    ${options.map((o,i)=>`<button class="mc-option" id="opt-${i}" onclick="checkAnswer(${i},${correctIdx})">${esc(o.def)}</button>`).join('')}
+    ${options.map((o,i)=>`<button class="mc-option" id="opt-${i}" onclick="checkAnswer(${i},${correctIdx})">${esc(o.term)}</button>`).join('')}
   </div>`;
 }
 
