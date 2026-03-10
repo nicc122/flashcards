@@ -375,7 +375,10 @@ function loadVocab() {
   try {
     const raw = new URLSearchParams(window.location.search).get('data');
     if (raw) {
-      const parsed = JSON.parse(atob(raw));
+      // Decode as UTF-8 to correctly handle accented characters (à, è, ì, etc.)
+      const bytes = Uint8Array.from(atob(raw), c => c.charCodeAt(0));
+      const json  = new TextDecoder('utf-8').decode(bytes);
+      const parsed = JSON.parse(json);
       if (Array.isArray(parsed) && parsed.length > 0) return parsed;
     }
   } catch(e) {}
@@ -722,7 +725,12 @@ function checkFillAnswer(typed, correct) {
 function shuffle(arr) {
   const a=[...arr]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a;
 }
-function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function esc(s) {
+  // Only encode the characters that are actually dangerous in HTML context.
+  // Do NOT encode & because accented chars like à may arrive as &agrave; and
+  // we want the browser to render them correctly, not double-encode them.
+  return String(s).replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
 
 render();
 </script>
