@@ -604,12 +604,12 @@ function renderLearnFill() {
   app.innerHTML = `
     <div class="round-label">Round 2 of 2 &mdash; Fill in the Gap</div>
     <div class="fill-question">
-      <div class="mc-label">Term</div>
-      <div class="fill-term">${esc(item.term)}</div>
+      <div class="mc-label">Definition</div>
+      <div class="fill-term">${esc(item.def)}</div>
     </div>
     <div class="fill-input-wrap">
       <input class="fill-input" id="fill-input" type="text"
-        placeholder="Type the Italian translation…"
+        placeholder="Type the term…"
         onkeydown="handleFillKey(event)"
         autocomplete="off" autocorrect="off" spellcheck="false" />
     </div>
@@ -637,7 +637,7 @@ function submitFill() {
   document.getElementById('fill-submit').disabled = true;
 
   const item    = learnOrder[learnIndex];
-  const correct = checkFillAnswer(typed, item.def);
+  const correct = checkFillAnswer(typed, item.term);
 
   if (correct) {
     learnFillScore++;
@@ -647,7 +647,7 @@ function submitFill() {
     setTimeout(advanceFill, 1000);
   } else {
     input.classList.add('wrong');
-    document.getElementById('fill-fb').innerHTML = '✗ The answer is: <strong>' + esc(item.def) + '</strong>';
+    document.getElementById('fill-fb').innerHTML = '✗ The answer is: <strong>' + esc(item.term) + '</strong>';
     document.getElementById('fill-fb').className = 'fill-feedback wrong';
 
     // Replace Check button with Next
@@ -670,7 +670,7 @@ function skipFill() {
 
   const item = learnOrder[learnIndex];
   input.classList.add('wrong');
-  document.getElementById('fill-fb').innerHTML = 'Answer: <strong>' + esc(item.def) + '</strong>';
+  document.getElementById('fill-fb').innerHTML = 'Answer: <strong>' + esc(item.term) + '</strong>';
   document.getElementById('fill-fb').className = 'fill-feedback wrong';
 
   document.getElementById('fill-submit').style.display = 'none';
