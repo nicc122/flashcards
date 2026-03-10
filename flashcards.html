@@ -37,7 +37,7 @@
   }
   .mode-btn {
     flex: 1;
-    padding: 7px 18px;
+    padding: 7px 14px;
     border: none;
     border-radius: 6px;
     background: transparent;
@@ -46,6 +46,7 @@
     font-weight: 500;
     color: #666;
     transition: all 0.15s;
+    white-space: nowrap;
   }
   .mode-btn.active {
     background: #fff;
@@ -79,7 +80,7 @@
     transition: width 0.3s ease;
   }
 
-  /* FLASHCARD MODE */
+  /* ── FLASHCARD MODE ── */
   .card-wrap {
     width: 100%;
     max-width: 480px;
@@ -139,7 +140,7 @@
   }
   .fc-nav button:hover { border-color: #4f9cf9; color: #4f9cf9; }
 
-  /* MULTIPLE CHOICE MODE */
+  /* ── MULTIPLE CHOICE MODE ── */
   .mc-question {
     width: 100%;
     max-width: 480px;
@@ -178,7 +179,109 @@
   .mc-option.wrong   { border-color: #ef4444; background: #fef2f2; color: #b91c1c; }
   .mc-option:disabled { cursor: default; }
 
-  /* SCORE PANEL */
+  /* ── FILL-IN MODE ── */
+  .fill-question {
+    width: 100%;
+    max-width: 480px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    text-align: center;
+  }
+  .fill-term { font-size: 1.5rem; font-weight: 700; color: #1a1a1a; line-height: 1.3; }
+
+  .fill-input-wrap {
+    width: 100%;
+    max-width: 480px;
+    margin-bottom: 12px;
+  }
+  .fill-input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #1a1a1a;
+    outline: none;
+    transition: border-color 0.15s;
+    background: #fff;
+  }
+  .fill-input:focus { border-color: #4f9cf9; }
+  .fill-input.correct { border-color: #22c55e; background: #f0fdf4; color: #15803d; }
+  .fill-input.wrong   { border-color: #ef4444; background: #fef2f2; color: #b91c1c; }
+
+  .fill-feedback {
+    width: 100%;
+    max-width: 480px;
+    min-height: 28px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .fill-feedback.correct { color: #15803d; font-weight: 600; }
+  .fill-feedback.wrong   { color: #b91c1c; }
+
+  .fill-actions {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .fill-skip {
+    background: none;
+    border: none;
+    font-size: 0.88rem;
+    color: #888;
+    cursor: pointer;
+    padding: 6px 0;
+    text-decoration: underline;
+  }
+  .fill-skip:hover { color: #555; }
+  .fill-submit {
+    padding: 10px 28px;
+    background: #4f9cf9;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .fill-submit:hover { background: #3b82f6; }
+  .fill-submit:disabled { background: #b0c9f7; cursor: default; }
+
+  /* ── ROUND TRANSITION ── */
+  .transition-panel {
+    width: 100%;
+    max-width: 480px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 36px 24px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  }
+  .transition-emoji { font-size: 2.6rem; margin-bottom: 14px; }
+  .transition-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+  .transition-sub   { font-size: 0.95rem; color: #666; margin-bottom: 24px; }
+  .transition-btn {
+    padding: 12px 32px;
+    background: #4f9cf9;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .transition-btn:hover { background: #3b82f6; }
+
+  /* ── SCORE PANEL ── */
   .score-panel {
     width: 100%;
     max-width: 480px;
@@ -190,7 +293,21 @@
   }
   .score-emoji { font-size: 3rem; margin-bottom: 12px; }
   .score-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; }
-  .score-sub   { font-size: 0.95rem; color: #666; margin-bottom: 24px; }
+  .score-sub   { font-size: 0.95rem; color: #666; margin-bottom: 16px; }
+  .score-breakdown {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  .score-pill {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .score-pill.mc   { background: #eff6ff; color: #2563eb; }
+  .score-pill.fill { background: #f0fdf4; color: #15803d; }
   .restart-btn {
     padding: 12px 32px;
     background: #4f9cf9;
@@ -203,6 +320,18 @@
     transition: background 0.15s;
   }
   .restart-btn:hover { background: #3b82f6; }
+
+  .round-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #4f9cf9;
+    margin-bottom: 14px;
+    text-align: center;
+    width: 100%;
+    max-width: 480px;
+  }
 
   .error-msg {
     max-width: 400px;
@@ -220,8 +349,9 @@
 <h1>Vocabulary Practice</h1>
 
 <div class="mode-bar">
-  <button class="mode-btn active" id="btn-fc" onclick="setMode('flashcard')">Flashcards</button>
-  <button class="mode-btn"        id="btn-mc" onclick="setMode('mc')">Multiple Choice</button>
+  <button class="mode-btn active" id="btn-fc"   onclick="setMode('flashcard')">Flashcards</button>
+  <button class="mode-btn"        id="btn-mc"   onclick="setMode('mc')">Multiple Choice</button>
+  <button class="mode-btn"        id="btn-learn" onclick="setMode('learn')">Learn</button>
 </div>
 
 <div class="progress-wrap">
@@ -234,11 +364,11 @@
 
 <script>
 const DEMO = [
-  { term: "to iron out",            def: "to resolve problems or difficulties" },
-  { term: "bottleneck",             def: "a point of congestion that slows a process" },
-  { term: "to sign off on",         def: "to give official approval to something" },
-  { term: "turnaround time",        def: "the time needed to complete a task" },
-  { term: "to get the ball rolling", def: "to start a process or activity" }
+  { term: "to iron out",             def: "to resolve problems or difficulties" },
+  { term: "bottleneck",              def: "a point of congestion that slows a process" },
+  { term: "to sign off on",          def: "to give official approval to something" },
+  { term: "turnaround time",         def: "the time needed to complete a task" },
+  { term: "to get the ball rolling",  def: "to start a process or activity" }
 ];
 
 function loadVocab() {
@@ -255,15 +385,31 @@ function loadVocab() {
 const vocab = loadVocab();
 
 let mode = 'flashcard';
+
+// Flashcard state
 let fcIndex = 0, fcFlipped = false;
-let mcIndex = 0, mcScore  = 0, mcAnswered = false;
+
+// MC state
+let mcIndex = 0, mcScore = 0, mcAnswered = false;
+
+// Learn state
+let learnPhase = 'mc';   // 'mc' | 'transition' | 'fill' | 'done'
+let learnIndex = 0;
+let learnMCScore = 0;
+let learnFillScore = 0;
+let learnAnswered = false;
+let learnOrder = [];     // shuffled vocab order for this session
 
 function setMode(m) {
   mode = m;
   fcIndex = 0; fcFlipped = false;
   mcIndex = 0; mcScore = 0; mcAnswered = false;
-  document.getElementById('btn-fc').classList.toggle('active', m === 'flashcard');
-  document.getElementById('btn-mc').classList.toggle('active', m === 'mc');
+  learnPhase = 'mc'; learnIndex = 0;
+  learnMCScore = 0; learnFillScore = 0; learnAnswered = false;
+  learnOrder = shuffle([...vocab]);
+  ['fc','mc','learn'].forEach(id => {
+    document.getElementById('btn-' + id).classList.toggle('active', m === (id === 'fc' ? 'flashcard' : id));
+  });
   document.getElementById('score-label').style.display = 'none';
   render();
 }
@@ -273,6 +419,7 @@ function updateProgress(current, total, scoreText) {
   document.getElementById('prog-label').textContent = current + ' / ' + total;
   const sl = document.getElementById('score-label');
   if (scoreText !== undefined) { sl.style.display = ''; sl.textContent = scoreText; }
+  else { sl.style.display = 'none'; }
 }
 
 function render() {
@@ -280,10 +427,12 @@ function render() {
     document.getElementById('app').innerHTML = '<div class="error-msg">No vocabulary found. Check the URL parameter.</div>';
     return;
   }
-  mode === 'flashcard' ? renderFC() : renderMC();
+  if (mode === 'flashcard') renderFC();
+  else if (mode === 'mc')   renderMC();
+  else                      renderLearn();
 }
 
-/* ── Flashcard ── */
+/* ────────────────── FLASHCARD ────────────────── */
 function renderFC() {
   const app = document.getElementById('app');
   if (fcIndex >= vocab.length) {
@@ -323,7 +472,7 @@ function fcNext(e)  { e.stopPropagation(); fcIndex++; fcFlipped = false; renderF
 function fcPrev(e)  { e.stopPropagation(); if(fcIndex>0){fcIndex--; fcFlipped=false; renderFC();} }
 function fcRestart(){ fcIndex=0; fcFlipped=false; renderFC(); }
 
-/* ── Multiple Choice ── */
+/* ────────────────── MULTIPLE CHOICE ────────────────── */
 function renderMC() {
   const app = document.getElementById('app');
   if (mcIndex >= vocab.length) {
@@ -350,11 +499,11 @@ function renderMC() {
     <div class="mc-term">${esc(item.def)}</div>
   </div>
   <div class="mc-options">
-    ${options.map((o,i)=>`<button class="mc-option" id="opt-${i}" onclick="checkAnswer(${i},${correctIdx})">${esc(o.term)}</button>`).join('')}
+    ${options.map((o,i)=>`<button class="mc-option" id="opt-${i}" onclick="checkMCAnswer(${i},${correctIdx})">${esc(o.term)}</button>`).join('')}
   </div>`;
 }
 
-function checkAnswer(chosen, correct) {
+function checkMCAnswer(chosen, correct) {
   if (mcAnswered) return;
   mcAnswered = true;
   const btns = document.querySelectorAll('.mc-option');
@@ -367,6 +516,209 @@ function checkAnswer(chosen, correct) {
 
 function mcRestart(){ mcIndex=0; mcScore=0; mcAnswered=false; renderMC(); }
 
+/* ────────────────── LEARN MODE ────────────────── */
+function renderLearn() {
+  if      (learnPhase === 'mc')         renderLearnMC();
+  else if (learnPhase === 'transition') renderLearnTransition();
+  else if (learnPhase === 'fill')       renderLearnFill();
+  else                                  renderLearnDone();
+}
+
+/* Round 1: Multiple Choice */
+function renderLearnMC() {
+  const app = document.getElementById('app');
+  const total = learnOrder.length * 2; // MC + fill = 2 rounds
+
+  if (learnIndex >= learnOrder.length) {
+    learnPhase = 'transition';
+    learnIndex = 0;
+    learnAnswered = false;
+    renderLearn();
+    return;
+  }
+
+  updateProgress(learnIndex, total, learnIndex > 0 ? '&#10003; ' + learnMCScore + '/' + learnIndex : undefined);
+
+  const item    = learnOrder[learnIndex];
+  const options = shuffle([item, ...shuffle(learnOrder.filter(v=>v!==item)).slice(0,3)]);
+  const correctIdx = options.indexOf(item);
+
+  app.innerHTML = `
+    <div class="round-label">Round 1 of 2 &mdash; Multiple Choice</div>
+    <div class="mc-question">
+      <div class="mc-term">${esc(item.def)}</div>
+    </div>
+    <div class="mc-options">
+      ${options.map((o,i)=>`<button class="mc-option" id="lopt-${i}" onclick="checkLearnMC(${i},${correctIdx})">${esc(o.term)}</button>`).join('')}
+    </div>`;
+}
+
+function checkLearnMC(chosen, correct) {
+  if (learnAnswered) return;
+  learnAnswered = true;
+  const btns = document.querySelectorAll('.mc-option');
+  btns.forEach(b => b.disabled = true);
+  btns[chosen].classList.add(chosen===correct ? 'correct' : 'wrong');
+  if (chosen !== correct) btns[correct].classList.add('correct');
+  if (chosen === correct) learnMCScore++;
+  setTimeout(() => { learnIndex++; learnAnswered = false; renderLearnMC(); }, 1100);
+}
+
+/* Transition between rounds */
+function renderLearnTransition() {
+  const pct = Math.round((learnMCScore / learnOrder.length) * 100);
+  updateProgress(learnOrder.length, learnOrder.length * 2, '&#10003; ' + learnMCScore + '/' + learnOrder.length);
+  document.getElementById('app').innerHTML = `
+    <div class="transition-panel">
+      <div class="transition-emoji">&#127919;</div>
+      <div class="transition-title">Round 1 complete!</div>
+      <div class="transition-sub">You got ${learnMCScore} out of ${learnOrder.length} correct (${pct}%).<br>Now type the answers from memory.</div>
+      <button class="transition-btn" onclick="startFillRound()">Start Round 2</button>
+    </div>`;
+}
+
+function startFillRound() {
+  learnPhase = 'fill';
+  learnIndex = 0;
+  learnAnswered = false;
+  learnOrder = shuffle([...learnOrder]); // re-shuffle for fill round
+  render();
+}
+
+/* Round 2: Fill in the gap */
+function renderLearnFill() {
+  const app = document.getElementById('app');
+  const total = learnOrder.length * 2;
+  const overall = learnOrder.length + learnIndex;
+
+  if (learnIndex >= learnOrder.length) {
+    learnPhase = 'done';
+    renderLearnDone();
+    return;
+  }
+
+  updateProgress(overall, total, '&#10003; ' + (learnMCScore + learnFillScore) + '/' + (learnOrder.length + learnIndex));
+
+  const item = learnOrder[learnIndex];
+
+  app.innerHTML = `
+    <div class="round-label">Round 2 of 2 &mdash; Fill in the Gap</div>
+    <div class="fill-question">
+      <div class="mc-label">Term</div>
+      <div class="fill-term">${esc(item.term)}</div>
+    </div>
+    <div class="fill-input-wrap">
+      <input class="fill-input" id="fill-input" type="text"
+        placeholder="Type the Italian translation…"
+        onkeydown="handleFillKey(event)"
+        autocomplete="off" autocorrect="off" spellcheck="false" />
+    </div>
+    <div class="fill-feedback" id="fill-fb"></div>
+    <div class="fill-actions">
+      <button class="fill-skip" onclick="skipFill()">Don't know?</button>
+      <button class="fill-submit" id="fill-submit" onclick="submitFill()">Check</button>
+    </div>`;
+
+  document.getElementById('fill-input').focus();
+}
+
+function handleFillKey(e) {
+  if (e.key === 'Enter') submitFill();
+}
+
+function submitFill() {
+  if (learnAnswered) return;
+  const input = document.getElementById('fill-input');
+  const typed = input.value.trim();
+  if (!typed) return;
+
+  learnAnswered = true;
+  input.disabled = true;
+  document.getElementById('fill-submit').disabled = true;
+
+  const item    = learnOrder[learnIndex];
+  const correct = checkFillAnswer(typed, item.def);
+
+  if (correct) {
+    learnFillScore++;
+    input.classList.add('correct');
+    document.getElementById('fill-fb').textContent = '✓ Correct!';
+    document.getElementById('fill-fb').className = 'fill-feedback correct';
+    setTimeout(advanceFill, 1000);
+  } else {
+    input.classList.add('wrong');
+    document.getElementById('fill-fb').innerHTML = '✗ The answer is: <strong>' + esc(item.def) + '</strong>';
+    document.getElementById('fill-fb').className = 'fill-feedback wrong';
+
+    // Replace Check button with Next
+    document.getElementById('fill-submit').style.display = 'none';
+    const actions = document.querySelector('.fill-actions');
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'fill-submit';
+    nextBtn.textContent = 'Next →';
+    nextBtn.onclick = advanceFill;
+    actions.appendChild(nextBtn);
+  }
+}
+
+function skipFill() {
+  if (learnAnswered) return;
+  learnAnswered = true;
+  const input = document.getElementById('fill-input');
+  input.disabled = true;
+  document.getElementById('fill-submit').disabled = true;
+
+  const item = learnOrder[learnIndex];
+  input.classList.add('wrong');
+  document.getElementById('fill-fb').innerHTML = 'Answer: <strong>' + esc(item.def) + '</strong>';
+  document.getElementById('fill-fb').className = 'fill-feedback wrong';
+
+  document.getElementById('fill-submit').style.display = 'none';
+  const actions = document.querySelector('.fill-actions');
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'fill-submit';
+  nextBtn.textContent = 'Next →';
+  nextBtn.onclick = advanceFill;
+  actions.appendChild(nextBtn);
+}
+
+function advanceFill() {
+  learnIndex++;
+  learnAnswered = false;
+  renderLearnFill();
+}
+
+/* Final score */
+function renderLearnDone() {
+  const total     = learnOrder.length * 2;
+  const combined  = learnMCScore + learnFillScore;
+  const pct       = Math.round((combined / total) * 100);
+  const emoji     = pct === 100 ? '&#127942;' : pct >= 70 ? '&#128077;' : '&#128218;';
+  const msg       = pct === 100 ? 'Perfect session!' : pct >= 70 ? 'Great work!' : 'Keep practising!';
+
+  updateProgress(total, total, '&#10003; ' + combined + '/' + total);
+  document.getElementById('app').innerHTML = `
+    <div class="score-panel">
+      <div class="score-emoji">${emoji}</div>
+      <div class="score-title">${msg}</div>
+      <div class="score-sub">Total: ${combined} out of ${total} correct (${pct}%)</div>
+      <div class="score-breakdown">
+        <span class="score-pill mc">MC: ${learnMCScore}/${learnOrder.length}</span>
+        <span class="score-pill fill">Fill-in: ${learnFillScore}/${learnOrder.length}</span>
+      </div>
+      <button class="restart-btn" onclick="setMode('learn')">Go again</button>
+    </div>`;
+}
+
+/* Answer checking: case-insensitive, accepts any slash/comma alternative */
+function checkFillAnswer(typed, correct) {
+  const norm = s => s.trim().toLowerCase().replace(/['']/g, "'");
+  const t = norm(typed);
+  const alternatives = norm(correct).split(/[,/]/).map(s => s.trim()).filter(Boolean);
+  return alternatives.some(a => t === a);
+}
+
+/* ────────────────── UTILITIES ────────────────── */
 function shuffle(arr) {
   const a=[...arr]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a;
 }
