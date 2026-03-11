@@ -232,12 +232,14 @@ let originalJson = '';     // to detect changes
 let pendingChanges = 0;
 let modalCb      = null;
 
-// ── BOOT ────────────────────────────────────────────────
-if (token) {
-  showLoading();
-  loadData();
-} else {
-  showAuth();
+// ── BOOT (defined here, called at end of script after all functions) ──
+function boot() {
+  if (token) {
+    showLoading();
+    loadData();
+  } else {
+    showAuth();
+  }
 }
 
 // ── AUTH ────────────────────────────────────────────────
@@ -616,6 +618,9 @@ function decodeBase64Utf8(b64) {
 function esc(s) {
   return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
+
+// ── START ────────────────────────────────────────────────
+boot();
 </script>
 </body>
 </html>
