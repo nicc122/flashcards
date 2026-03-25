@@ -1,213 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flashcard Deck Manager</title>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: #f0f2f5;
-    color: #1a1a1a;
-    min-height: 100vh;
-  }
-
-  /* ── TOP BAR ── */
-  .topbar {
-    background: #fff;
-    border-bottom: 1px solid #e5e7eb;
-    padding: 0 28px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    gap: 12px;
-  }
-  .topbar-left  { display: flex; align-items: center; gap: 8px; }
-  .topbar-right { display: flex; align-items: center; gap: 8px; }
-  .topbar-title { font-size: 1rem; font-weight: 700; color: #111; letter-spacing: -0.01em; }
-  .topbar-sub   { font-size: 0.8rem; color: #999; }
-
-  .top-btn {
-    padding: 7px 14px;
-    border-radius: 7px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    transition: background 0.15s;
-    white-space: nowrap;
-  }
-  .btn-primary   { background: #4f9cf9; color: #fff; }
-  .btn-primary:hover   { background: #3b82f6; }
-  .btn-secondary { background: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; }
-  .btn-secondary:hover { background: #e5e7eb; }
-  .btn-success   { background: #22c55e; color: #fff; }
-  .btn-success:hover   { background: #16a34a; }
-  .btn-danger    { background: #ef4444; color: #fff; }
-
-  .save-indicator { font-size: 0.78rem; color: #22c55e; font-weight: 600; opacity: 0; transition: opacity 0.4s; white-space: nowrap; }
-  .save-indicator.visible { opacity: 1; }
-
-  /* ── AUTH SCREEN ── */
-  .auth-wrap {
-    display: flex; align-items: center; justify-content: center;
-    min-height: calc(100vh - 56px); padding: 20px;
-  }
-  .auth-card {
-    background: #fff; border-radius: 14px; padding: 36px 32px;
-    max-width: 460px; width: 100%;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  }
-  .auth-card h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 6px; }
-  .auth-card p  { font-size: 0.87rem; color: #6b7280; line-height: 1.6; margin-bottom: 20px; }
-  .auth-card a  { color: #4f9cf9; }
-  .field-label  { font-size: 0.8rem; font-weight: 600; color: #374151; margin-bottom: 5px; display: block; }
-  .field-input  {
-    width: 100%; padding: 9px 13px; border: 1px solid #d1d5db;
-    border-radius: 8px; font-size: 0.88rem; outline: none;
-    transition: border-color 0.15s; margin-bottom: 14px;
-  }
-  .field-input:focus { border-color: #4f9cf9; }
-  .auth-error { font-size: 0.82rem; color: #ef4444; margin-top: 8px; min-height: 20px; }
-  .auth-hint  { font-size: 0.78rem; color: #9ca3af; margin-top: 14px; line-height: 1.5; }
-  .auth-hint code { background: #f3f4f6; padding: 1px 6px; border-radius: 4px; font-size: 0.76rem; }
-
-  /* ── LOADING ── */
-  .loading-wrap { display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 56px); }
-  .spinner { width: 32px; height: 32px; border: 3px solid #e5e7eb; border-top-color: #4f9cf9; border-radius: 50%; animation: spin 0.7s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* ── CONTAINER ── */
-  .container { max-width: 1100px; margin: 0 auto; padding: 28px 20px; }
-
-  /* ── EMPTY STATE ── */
-  .empty-state { text-align: center; padding: 80px 20px; color: #888; }
-  .empty-state .icon { font-size: 3rem; margin-bottom: 14px; }
-  .empty-state h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; color: #555; }
-  .empty-state p  { font-size: 0.9rem; line-height: 1.6; }
-
-  /* ── COURSE CARDS ── */
-  .course-card {
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 14px;
-    margin-bottom: 18px;
-    overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  }
-  .course-header {
-    display: flex; align-items: center; gap: 10px;
-    padding: 14px 20px;
-    cursor: pointer;
-    user-select: none;
-    transition: background 0.12s;
-  }
-  .course-header:hover { background: #f9fafb; }
-  .course-chevron {
-    font-size: 0.75rem; color: #9ca3af;
-    transition: transform 0.2s;
-    margin-left: auto;
-    flex-shrink: 0;
-  }
-  .course-card.collapsed .course-chevron { transform: rotate(-90deg); }
-  .course-body {
-    border-top: 1px solid #f3f4f6;
-    padding: 16px 16px 20px;
-    overflow: hidden;
-    transition: max-height 0.25s ease, padding 0.25s ease, opacity 0.2s ease;
-    max-height: 9999px;
-    opacity: 1;
-  }
-  .course-card.collapsed .course-body {
-    max-height: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    opacity: 0;
-  }
-  .student-name    { font-size: 1rem; font-weight: 700; color: #111; }
-  .lesson-count    { font-size: 0.75rem; background: #e0e7ff; color: #4338ca; border-radius: 20px; padding: 2px 10px; font-weight: 600; }
-
-  /* ── DECK GRID ── */
-  .deck-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
-  .deck-card { background: #fff; border-radius: 12px; border: 1px solid #e5e7eb; overflow: hidden; transition: box-shadow 0.15s, transform 0.15s; }
-  .deck-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); transform: translateY(-1px); }
-
-  .deck-card-header { padding: 14px 16px 10px; border-bottom: 1px solid #f3f4f6; display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-  .deck-meta   { flex: 1; min-width: 0; }
-  .deck-lesson { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; margin-bottom: 3px; }
-  .deck-date   { font-size: 0.78rem; color: #6b7280; }
-  .deck-badge  { flex-shrink: 0; padding: 3px 9px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; }
-  .deck-badge.ok   { background: #dcfce7; color: #15803d; }
-  .deck-badge.warn { background: #fef9c3; color: #854d0e; }
-  .deck-badge.none { background: #f3f4f6; color: #9ca3af; }
-
-  /* ── VOCAB LIST ── */
-  .vocab-list { padding: 10px 16px; max-height: 220px; overflow-y: auto; }
-  .vocab-item { display: grid; grid-template-columns: 1fr auto 1fr auto; align-items: start; gap: 4px 8px; padding: 5px 0; border-bottom: 1px solid #f3f4f6; font-size: 0.82rem; }
-  .vocab-item:last-child { border-bottom: none; }
-  .vocab-term { color: #111; font-weight: 500; line-height: 1.4; word-break: break-word; }
-  .vocab-def  { color: #6b7280; line-height: 1.4; word-break: break-word; }
-  .vocab-edit-btn { background: none; border: none; color: #d1d5db; cursor: pointer; padding: 2px 3px; border-radius: 4px; font-size: 0.8rem; line-height: 1; transition: color 0.12s, background 0.12s; align-self: start; margin-top: 1px; }
-  .vocab-edit-btn:hover { color: #4f9cf9; background: #eff6ff; }
-  .vocab-input { width: 100%; border: 1px solid #d1d5db; border-radius: 5px; padding: 3px 7px; font-size: 0.82rem; color: #111; outline: none; transition: border-color 0.15s; }
-  .vocab-input:focus { border-color: #4f9cf9; }
-  .vocab-save-btn { padding: 3px 8px; background: #4f9cf9; color: #fff; border: none; border-radius: 5px; font-size: 0.75rem; font-weight: 600; cursor: pointer; white-space: nowrap; align-self: start; margin-top: 1px; }
-
-  /* ── ADD TERM ── */
-  .add-term-row { padding: 8px 16px; border-top: 1px solid #f3f4f6; display: flex; gap: 6px; align-items: center; }
-  .add-input { flex: 1; border: 1px solid #e5e7eb; border-radius: 6px; padding: 5px 10px; font-size: 0.82rem; outline: none; transition: border-color 0.15s; }
-  .add-input:focus { border-color: #4f9cf9; }
-  .add-btn { padding: 5px 12px; background: #f0f7ff; color: #2563eb; border: 1px solid #bfdbfe; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: background 0.12s; }
-  .add-btn:hover { background: #dbeafe; }
-
-  /* ── DECK FOOTER ── */
-  .deck-footer { padding: 10px 16px; border-top: 1px solid #f3f4f6; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
-  .footer-left { display: flex; gap: 8px; flex-wrap: wrap; }
-  .action-btn { padding: 6px 13px; border-radius: 7px; font-size: 0.8rem; font-weight: 600; cursor: pointer; border: none; transition: background 0.15s; text-decoration: none; display: inline-block; }
-  .btn-open  { background: #4f9cf9; color: #fff; }
-  .btn-open:hover  { background: #3b82f6; }
-  .btn-copy  { background: #f3f4f6; color: #374151; }
-  .btn-copy:hover  { background: #e5e7eb; }
-  .btn-regen { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
-  .btn-regen:hover { background: #dcfce7; }
-  .btn-del   { background: #fff1f2; color: #be123c; border: 1px solid #fecdd3; }
-  .btn-del:hover   { background: #ffe4e6; }
-
-  /* ── PENDING CHANGES BAR ── */
-  .changes-bar {
-    position: fixed; bottom: 0; left: 0; right: 0;
-    background: #1e293b; color: #fff;
-    padding: 12px 28px;
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 16px; z-index: 90;
-    transform: translateY(100%); transition: transform 0.25s ease;
-  }
-  .changes-bar.visible { transform: translateY(0); }
-  .changes-bar p { font-size: 0.87rem; }
-  .changes-bar strong { color: #fbbf24; }
-  .changes-btns { display: flex; gap: 8px; }
-
-  /* ── MODAL ── */
-  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 20px; }
-  .modal { background: #fff; border-radius: 14px; padding: 28px; max-width: 480px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
-  .modal h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
-  .modal p  { font-size: 0.88rem; color: #555; margin-bottom: 20px; line-height: 1.5; }
-  .modal-btns { display: flex; gap: 10px; justify-content: flex-end; }
-  .modal-btn { padding: 8px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 600; border: none; cursor: pointer; }
-  .modal-cancel  { background: #f3f4f6; color: #374151; }
-  .modal-cancel:hover  { background: #e5e7eb; }
-  .modal-confirm { background: #ef4444; color: #fff; }
-  .modal-confirm:hover { background: #dc2626; }
-
-  .vocab-list::-webkit-scrollbar { width: 4px; }
-  .vocab-list::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 4px; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcard Deck Manager</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f0f2f5; color: #1a1a1a; min-height: 100vh; }
+    /* ── TOP BAR ── */
+    .topbar { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 0 28px; height: 56px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; gap: 12px; }
+    .topbar-left { display: flex; align-items: center; gap: 8px; }
+    .topbar-right { display: flex; align-items: center; gap: 8px; }
+    .topbar-title { font-size: 1rem; font-weight: 700; color: #111; letter-spacing: -0.01em; }
+    .topbar-sub { font-size: 0.8rem; color: #999; }
+    .top-btn { padding: 7px 14px; border-radius: 7px; font-size: 0.82rem; font-weight: 600; cursor: pointer; border: none; transition: background 0.15s; white-space: nowrap; }
+    .btn-primary { background: #4f9cf9; color: #fff; }
+    .btn-primary:hover { background: #3b82f6; }
+    .btn-secondary { background: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; }
+    .btn-secondary:hover { background: #e5e7eb; }
+    .btn-success { background: #22c55e; color: #fff; }
+    .btn-success:hover { background: #16a34a; }
+    .btn-danger { background: #ef4444; color: #fff; }
+    .save-indicator { font-size: 0.78rem; color: #22c55e; font-weight: 600; opacity: 0; transition: opacity 0.4s; white-space: nowrap; }
+    .save-indicator.visible { opacity: 1; }
+    /* ── TOKEN MODAL ── */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .modal { background: #fff; border-radius: 14px; padding: 28px; max-width: 480px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+    .modal h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .modal p { font-size: 0.88rem; color: #555; margin-bottom: 16px; line-height: 1.5; }
+    .modal-btns { display: flex; gap: 10px; justify-content: flex-end; margin-top: 16px; }
+    .modal-btn { padding: 8px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 600; border: none; cursor: pointer; }
+    .modal-cancel { background: #f3f4f6; color: #374151; }
+    .modal-cancel:hover { background: #e5e7eb; }
+    .modal-confirm { background: #4f9cf9; color: #fff; }
+    .modal-confirm:hover { background: #3b82f6; }
+    .modal-del { background: #ef4444; color: #fff; }
+    .modal-del:hover { background: #dc2626; }
+    .field-label { font-size: 0.8rem; font-weight: 600; color: #374151; margin-bottom: 5px; display: block; }
+    .field-input { width: 100%; padding: 9px 13px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.88rem; outline: none; transition: border-color 0.15s; margin-bottom: 6px; }
+    .field-input:focus { border-color: #4f9cf9; }
+    .auth-error { font-size: 0.82rem; color: #ef4444; min-height: 20px; margin-bottom: 4px; }
+    .auth-hint { font-size: 0.78rem; color: #9ca3af; margin-top: 10px; line-height: 1.5; }
+    .auth-hint code { background: #f3f4f6; padding: 1px 6px; border-radius: 4px; font-size: 0.76rem; }
+    /* ── LOADING ── */
+    .loading-wrap { display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 56px); }
+    .spinner { width: 32px; height: 32px; border: 3px solid #e5e7eb; border-top-color: #4f9cf9; border-radius: 50%; animation: spin 0.7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    /* ── CONTAINER ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 28px 20px; }
+    /* ── EMPTY STATE ── */
+    .empty-state { text-align: center; padding: 80px 20px; color: #888; }
+    .empty-state .icon { font-size: 3rem; margin-bottom: 14px; }
+    .empty-state h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; color: #555; }
+    .empty-state p { font-size: 0.9rem; line-height: 1.6; }
+    /* ── COURSE CARDS ── */
+    .course-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; margin-bottom: 18px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+    .course-header { display: flex; align-items: center; gap: 10px; padding: 14px 20px; cursor: pointer; user-select: none; transition: background 0.12s; }
+    .course-header:hover { background: #f9fafb; }
+    .course-chevron { font-size: 0.75rem; color: #9ca3af; transition: transform 0.2s; margin-left: auto; flex-shrink: 0; }
+    .course-card.collapsed .course-chevron { transform: rotate(-90deg); }
+    .course-body { border-top: 1px solid #f3f4f6; padding: 16px 16px 20px; overflow: hidden; transition: max-height 0.25s ease, padding 0.25s ease, opacity 0.2s ease; max-height: 9999px; opacity: 1; }
+    .course-card.collapsed .course-body { max-height: 0; padding-top: 0; padding-bottom: 0; opacity: 0; }
+    .student-name { font-size: 1rem; font-weight: 700; color: #111; }
+    .lesson-count { font-size: 0.75rem; background: #e0e7ff; color: #4338ca; border-radius: 20px; padding: 2px 10px; font-weight: 600; }
+    /* ── DECK GRID ── */
+    .deck-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+    .deck-card { background: #fff; border-radius: 12px; border: 1px solid #e5e7eb; overflow: hidden; transition: box-shadow 0.15s, transform 0.15s; }
+    .deck-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); transform: translateY(-1px); }
+    .deck-card-header { padding: 14px 16px 10px; border-bottom: 1px solid #f3f4f6; display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .deck-meta { flex: 1; min-width: 0; }
+    .deck-lesson { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; margin-bottom: 3px; }
+    .deck-date { font-size: 0.78rem; color: #6b7280; }
+    .deck-badge { flex-shrink: 0; padding: 3px 9px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; }
+    .deck-badge.ok { background: #dcfce7; color: #15803d; }
+    .deck-badge.warn { background: #fef9c3; color: #854d0e; }
+    .deck-badge.none { background: #f3f4f6; color: #9ca3af; }
+    /* ── VOCAB LIST ── */
+    .vocab-list { padding: 10px 16px; max-height: 220px; overflow-y: auto; }
+    .vocab-item { display: grid; grid-template-columns: 1fr auto 1fr auto; align-items: start; gap: 4px 8px; padding: 5px 0; border-bottom: 1px solid #f3f4f6; font-size: 0.82rem; }
+    .vocab-item:last-child { border-bottom: none; }
+    .vocab-term { color: #111; font-weight: 500; line-height: 1.4; word-break: break-word; }
+    .vocab-def { color: #6b7280; line-height: 1.4; word-break: break-word; }
+    .vocab-edit-btn { background: none; border: none; color: #d1d5db; cursor: pointer; padding: 2px 3px; border-radius: 4px; font-size: 0.8rem; line-height: 1; transition: color 0.12s, background 0.12s; align-self: start; margin-top: 1px; }
+    .vocab-edit-btn:hover { color: #4f9cf9; background: #eff6ff; }
+    .vocab-input { width: 100%; border: 1px solid #d1d5db; border-radius: 5px; padding: 3px 7px; font-size: 0.82rem; color: #111; outline: none; transition: border-color 0.15s; }
+    .vocab-input:focus { border-color: #4f9cf9; }
+    .vocab-save-btn { padding: 3px 8px; background: #4f9cf9; color: #fff; border: none; border-radius: 5px; font-size: 0.75rem; font-weight: 600; cursor: pointer; white-space: nowrap; align-self: start; margin-top: 1px; }
+    /* ── ADD TERM ── */
+    .add-term-row { padding: 8px 16px; border-top: 1px solid #f3f4f6; display: flex; gap: 6px; align-items: center; }
+    .add-input { flex: 1; border: 1px solid #e5e7eb; border-radius: 6px; padding: 5px 10px; font-size: 0.82rem; outline: none; transition: border-color 0.15s; }
+    .add-input:focus { border-color: #4f9cf9; }
+    .add-btn { padding: 5px 12px; background: #f0f7ff; color: #2563eb; border: 1px solid #bfdbfe; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: background 0.12s; }
+    .add-btn:hover { background: #dbeafe; }
+    /* ── DECK FOOTER ── */
+    .deck-footer { padding: 10px 16px; border-top: 1px solid #f3f4f6; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+    .footer-left { display: flex; gap: 8px; flex-wrap: wrap; }
+    .action-btn { padding: 6px 13px; border-radius: 7px; font-size: 0.8rem; font-weight: 600; cursor: pointer; border: none; transition: background 0.15s; text-decoration: none; display: inline-block; }
+    .btn-open { background: #4f9cf9; color: #fff; }
+    .btn-open:hover { background: #3b82f6; }
+    .btn-copy { background: #f3f4f6; color: #374151; }
+    .btn-copy:hover { background: #e5e7eb; }
+    .btn-regen { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+    .btn-regen:hover { background: #dcfce7; }
+    .btn-del { background: #fff1f2; color: #be123c; border: 1px solid #fecdd3; }
+    .btn-del:hover { background: #ffe4e6; }
+    /* ── PENDING CHANGES BAR ── */
+    .changes-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff; padding: 12px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; z-index: 90; transform: translateY(100%); transition: transform 0.25s ease; }
+    .changes-bar.visible { transform: translateY(0); }
+    .changes-bar p { font-size: 0.87rem; }
+    .changes-bar strong { color: #fbbf24; }
+    .changes-btns { display: flex; gap: 8px; }
+    .vocab-list::-webkit-scrollbar { width: 4px; }
+    .vocab-list::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 4px; }
+  </style>
 </head>
 <body>
 
@@ -219,171 +124,202 @@
   </div>
   <div class="topbar-right">
     <span class="save-indicator" id="save-indicator">✓ Saved to GitHub</span>
-    <button class="top-btn btn-secondary" id="refresh-btn" onclick="loadData()" style="display:none">↺ Refresh</button>
-    <button class="top-btn btn-secondary" id="logout-btn"  onclick="logout()"    style="display:none">Sign out</button>
+    <button class="top-btn btn-secondary" id="refresh-btn" onclick="loadData()">↺ Refresh</button>
   </div>
 </div>
 
 <!-- MAIN CONTENT -->
-<div id="app">
-  <!-- filled by JS -->
-</div>
+<div id="app"></div>
 
 <!-- PENDING CHANGES BAR -->
 <div class="changes-bar" id="changes-bar">
   <p>You have <strong id="change-count">0</strong> unsaved change(s). Changes are not live until pushed to GitHub.</p>
   <div class="changes-btns">
     <button class="top-btn btn-secondary" onclick="discardChanges()" style="color:#fff;border-color:#475569">Discard</button>
-    <button class="top-btn btn-success"   onclick="pushChanges()">Push to GitHub ↑</button>
+    <button class="top-btn btn-success" onclick="pushChanges()">Push to GitHub ↑</button>
   </div>
 </div>
 
-<!-- DELETE MODAL -->
+<!-- GENERIC MODAL (delete confirm + token prompt) -->
 <div class="modal-overlay" id="modal" style="display:none">
   <div class="modal">
     <h2 id="modal-title"></h2>
-    <p  id="modal-body"></p>
-    <div class="modal-btns">
-      <button class="modal-btn modal-cancel"  onclick="closeModal()">Cancel</button>
-      <button class="modal-btn modal-confirm" id="modal-ok">Delete</button>
-    </div>
+    <div id="modal-body"></div>
+    <div class="modal-btns" id="modal-btns"></div>
   </div>
 </div>
 
 <script>
-// ── CONFIG ──────────────────────────────────────────────
-const GH_OWNER  = 'nicc122';
-const GH_REPO   = 'lessongen';
-const GH_FILE   = 'lesson-store.json';
-const GH_BRANCH = 'main';
+// ── CONFIG ────────────────────────────────────────────────────────────────────
+const GH_OWNER       = 'nicc122';
+const GH_REPO        = 'lessongen';
+const GH_FILE        = 'lesson-store.json';
+const GH_BRANCH      = 'main';
 const FLASHCARD_BASE = 'https://nicc122.github.io/flashcards/flashcards.html';
-const TOKEN_KEY = 'gh_dashboard_token';
+const TOKEN_KEY      = 'gh_dashboard_token';
 
-// ── STATE ───────────────────────────────────────────────
-let token        = localStorage.getItem(TOKEN_KEY) || '';
-let store        = null;   // current data
-let originalSha  = null;   // GitHub blob SHA (needed for update)
-let originalJson = '';     // to detect changes
+// Raw public URL — no token needed for reading
+const RAW_URL = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_BRANCH}/${GH_FILE}`;
+const GH_API  = 'https://api.github.com';
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let store         = null;
+let originalSha   = null;  // needed for GitHub PUT
+let originalJson  = '';
 let pendingChanges = 0;
-let modalCb      = null;
 
-// ── BOOT (defined here, called at end of script after all functions) ──
+// ── BOOT ──────────────────────────────────────────────────────────────────────
 function boot() {
-  if (token) {
-    showLoading();
-    loadData();
-  } else {
-    showAuth();
-  }
-}
-
-// ── AUTH ────────────────────────────────────────────────
-function showAuth() {
-  document.getElementById('app').innerHTML = `
-    <div class="auth-wrap">
-      <div class="auth-card">
-        <h2>🔑 Connect to GitHub</h2>
-        <p>This dashboard reads and writes <code style="background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:0.82rem">lesson-store.json</code>
-        from your <strong>nicc122/lessongen</strong> repo via the GitHub API.<br><br>
-        Your token is stored only in this browser — it never touches the code.</p>
-
-        <label class="field-label" for="token-input">GitHub Personal Access Token</label>
-        <input class="field-input" id="token-input" type="password"
-          placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
-          onkeydown="if(event.key==='Enter') connect()" />
-
-        <button class="top-btn btn-primary" style="width:100%;padding:10px" onclick="connect()">Connect</button>
-        <div class="auth-error" id="auth-error"></div>
-
-        <div class="auth-hint">
-          <strong>How to create a token:</strong><br>
-          GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens<br>
-          Repository: <code>nicc122/lessongen</code> · Permission: <code>Contents: Read and write</code>
-        </div>
-      </div>
-    </div>`;
-}
-
-async function connect() {
-  const input = document.getElementById('token-input');
-  const t = input.value.trim();
-  if (!t) return;
-  document.getElementById('auth-error').textContent = '';
   showLoading();
-  token = t;
-  try {
-    await loadData();
-    localStorage.setItem(TOKEN_KEY, token);
-  } catch(err) {
-    token = '';
-    showAuth();
-    document.getElementById('auth-error').textContent = '✗ ' + (err.message || 'Could not connect. Check your token.');
-  }
+  loadData();
 }
 
-function logout() {
-  localStorage.removeItem(TOKEN_KEY);
-  token = ''; store = null; originalSha = null;
-  document.getElementById('refresh-btn').style.display = 'none';
-  document.getElementById('logout-btn').style.display  = 'none';
-  document.getElementById('deck-count').textContent = '';
-  hidePendingBar();
-  showAuth();
-}
-
-// ── LOAD FROM GITHUB ────────────────────────────────────
+// ── LOAD — public raw URL, no token required ──────────────────────────────────
 function showLoading() {
-  document.getElementById('app').innerHTML = `
-    <div class="loading-wrap"><div class="spinner"></div></div>`;
+  document.getElementById('app').innerHTML =
+    '<div class="loading-wrap"><div class="spinner"></div></div>';
 }
 
 async function loadData() {
   showLoading();
-  const res = await ghGet(`repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}?ref=${GH_BRANCH}`);
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(err.message || `HTTP ${res.status}`);
+  try {
+    // 1. Load content via public raw URL (no auth)
+    const rawRes = await fetch(RAW_URL + '?t=' + Date.now()); // cache-bust
+    if (!rawRes.ok) throw new Error(`HTTP ${rawRes.status}`);
+    const json = await rawRes.text();
+    store = JSON.parse(json);
+    originalJson = json;
+    pendingChanges = 0;
+    hidePendingBar();
+
+    // 2. Fetch SHA separately via API (needed only if/when we push)
+    //    Do this quietly in the background — failures are non-fatal for reading.
+    fetchSha().catch(() => {});
+
+    render();
+  } catch (err) {
+    document.getElementById('app').innerHTML = `
+      <div class="loading-wrap" style="flex-direction:column;gap:12px">
+        <p style="color:#ef4444;font-weight:600">Failed to load: ${esc(err.message)}</p>
+        <button class="top-btn btn-primary" onclick="loadData()">Retry</button>
+      </div>`;
   }
-  const data = await res.json();
-  originalSha  = data.sha;
-  const json   = decodeBase64Utf8(data.content.replace(/\n/g, ''));
-  originalJson = json;
-  store        = JSON.parse(json);
-  pendingChanges = 0;
-  hidePendingBar();
-  document.getElementById('refresh-btn').style.display = '';
-  document.getElementById('logout-btn').style.display  = '';
-  render();
 }
 
-// ── PUSH TO GITHUB ──────────────────────────────────────
+// Fetch SHA so we have it ready when the user pushes (uses stored token if available)
+async function fetchSha() {
+  const t = localStorage.getItem(TOKEN_KEY) || '';
+  const headers = { Accept: 'application/vnd.github+json' };
+  if (t) headers['Authorization'] = `Bearer ${t}`;
+  const res = await fetch(`${GH_API}/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}?ref=${GH_BRANCH}`, { headers });
+  if (!res.ok) return;
+  const data = await res.json();
+  originalSha = data.sha;
+}
+
+// ── PUSH — asks for token only when needed ────────────────────────────────────
 async function pushChanges() {
   if (!store) return;
+
+  let token = localStorage.getItem(TOKEN_KEY) || '';
+
+  // If no SHA yet (token was never provided), we need one to push
+  if (!originalSha || !token) {
+    token = await promptForToken();
+    if (!token) return; // user cancelled
+  }
+
+  await doPush(token);
+}
+
+function promptForToken() {
+  return new Promise(resolve => {
+    const savedToken = localStorage.getItem(TOKEN_KEY) || '';
+    document.getElementById('modal-title').textContent = '🔑 GitHub token needed to push';
+    document.getElementById('modal-body').innerHTML = `
+      <p style="margin-bottom:12px">A token with <strong>Contents: Read and write</strong> permission on <code style="background:#f3f4f6;padding:1px 5px;border-radius:4px">nicc122/lessongen</code> is needed to save changes.<br><br>It will be stored in this browser only.</p>
+      <label class="field-label">GitHub Personal Access Token</label>
+      <input class="field-input" id="push-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" value="${esc(savedToken)}" />
+      <div class="auth-error" id="push-token-error"></div>
+      <div class="auth-hint">
+        GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens<br>
+        Repository: <code>nicc122/lessongen</code> · Permission: <code>Contents: Read and write</code>
+      </div>`;
+    document.getElementById('modal-btns').innerHTML = `
+      <button class="modal-btn modal-cancel" id="modal-cancel-btn">Cancel</button>
+      <button class="modal-btn modal-confirm" id="modal-ok-btn">Push ↑</button>`;
+    document.getElementById('modal').style.display = 'flex';
+
+    const okBtn = document.getElementById('modal-ok-btn');
+    const cancelBtn = document.getElementById('modal-cancel-btn');
+    const input = document.getElementById('push-token-input');
+
+    function finish(t) {
+      closeModal();
+      resolve(t);
+    }
+
+    okBtn.onclick = () => {
+      const t = input.value.trim();
+      if (!t) { document.getElementById('push-token-error').textContent = 'Please enter a token.'; return; }
+      localStorage.setItem(TOKEN_KEY, t);
+      finish(t);
+    };
+    cancelBtn.onclick = () => finish(null);
+    input.onkeydown = e => { if (e.key === 'Enter') okBtn.click(); if (e.key === 'Escape') finish(null); };
+    setTimeout(() => input.focus(), 50);
+  });
+}
+
+async function doPush(token) {
   const btn = document.querySelector('#changes-bar .btn-success');
   const orig = btn.textContent;
   btn.textContent = 'Pushing…';
   btn.disabled = true;
 
   try {
-    const newJson    = JSON.stringify(store, null, 2);
-    const newContent = encodeBase64Utf8(newJson);
-    const res = await ghPut(`repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}`, {
-      message: `dashboard: update lesson-store.json`,
-      content: newContent,
-      sha:     originalSha,
-      branch:  GH_BRANCH
+    // Re-fetch SHA fresh if we don't have it
+    if (!originalSha) {
+      const shaRes = await fetch(`${GH_API}/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}?ref=${GH_BRANCH}`, {
+        headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' }
+      });
+      if (!shaRes.ok) throw new Error(`Could not fetch SHA: HTTP ${shaRes.status}`);
+      const shaData = await shaRes.json();
+      originalSha = shaData.sha;
+    }
+
+    const newJson = JSON.stringify(store, null, 2);
+    const res = await fetch(`${GH_API}/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/vnd.github+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: 'dashboard: update lesson-store.json',
+        content: encodeBase64Utf8(newJson),
+        sha: originalSha,
+        branch: GH_BRANCH
+      })
     });
+
     if (!res.ok) {
       const err = await res.json().catch(() => ({}));
+      // Bad credentials — clear saved token so they'll be prompted again
+      if (res.status === 401 || res.status === 403) {
+        localStorage.removeItem(TOKEN_KEY);
+      }
       throw new Error(err.message || `HTTP ${res.status}`);
     }
+
     const data = await res.json();
-    originalSha  = data.content.sha;
+    originalSha = data.content.sha;
     originalJson = newJson;
     pendingChanges = 0;
     hidePendingBar();
     flashSaved();
-  } catch(err) {
+  } catch (err) {
     alert('Push failed: ' + err.message);
   } finally {
     btn.textContent = orig;
@@ -398,7 +334,7 @@ function discardChanges() {
   render();
 }
 
-// ── RENDER ──────────────────────────────────────────────
+// ── RENDER ────────────────────────────────────────────────────────────────────
 function render() {
   const app = document.getElementById('app');
   if (!store || !store.lessons || store.lessons.length === 0) {
@@ -410,7 +346,6 @@ function render() {
     return;
   }
 
-  // Group by student, newest first
   const grouped = {}, order = [];
   [...store.lessons].reverse().forEach(lesson => {
     const key = lesson.student || '(no student)';
@@ -432,21 +367,18 @@ function render() {
         <span class="lesson-count">${lessons.length} lesson${lessons.length !== 1 ? 's' : ''}</span>
         <span class="course-chevron">▼</span>
       </div>
-      <div class="course-body">
-      <div class="deck-grid">`;
+      <div class="course-body"><div class="deck-grid">`;
 
     lessons.forEach(lesson => {
-      const idx    = store.lessons.indexOf(lesson);
-      const vocab  = lesson.vocab || [];
+      const idx   = store.lessons.indexOf(lesson);
+      const vocab = lesson.vocab || [];
       const hasUrl = !!lesson.flashcardUrl;
-      const date   = lesson.sessionId
+      const date = lesson.sessionId
         ? new Date(lesson.sessionId).toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'})
         : '—';
       const lessonLabel = lesson.lessonNum ? `Lesson ${lesson.lessonNum}` : 'Lesson';
-      const badgeClass  = vocab.length === 0 ? 'none' : hasUrl ? 'ok' : 'warn';
-      const badgeText   = vocab.length === 0 ? 'No vocab'
-                        : hasUrl ? `${vocab.length} terms`
-                        : `${vocab.length} terms · no URL`;
+      const badgeClass = vocab.length === 0 ? 'none' : hasUrl ? 'ok' : 'warn';
+      const badgeText  = vocab.length === 0 ? 'No vocab' : hasUrl ? `${vocab.length} terms` : `${vocab.length} terms · no URL`;
 
       html += `<div class="deck-card" id="card-${idx}">
         <div class="deck-card-header">
@@ -462,10 +394,8 @@ function render() {
         vocab.forEach((item, vi) => { html += vocabRowHtml(idx, vi, item); });
         html += `</div>
         <div class="add-term-row">
-          <input class="add-input" id="add-term-${idx}" placeholder="Term…"
-            onkeydown="addOnEnter(event,${idx})" />
-          <input class="add-input" id="add-def-${idx}" placeholder="Definition / translation…"
-            onkeydown="addOnEnter(event,${idx})" />
+          <input class="add-input" id="add-term-${idx}" placeholder="Term…" onkeydown="addOnEnter(event,${idx})" />
+          <input class="add-input" id="add-def-${idx}" placeholder="Definition / translation…" onkeydown="addOnEnter(event,${idx})" />
           <button class="add-btn" onclick="addTerm(${idx})">+ Add</button>
         </div>`;
       } else {
@@ -480,13 +410,13 @@ function render() {
       if (vocab.length > 0) {
         html += `<button class="action-btn btn-regen" onclick="regenUrl(${idx})">↺ Regen URL</button>`;
       }
-      html += `</div>
-        <button class="action-btn btn-del" onclick="confirmDeleteEntry(${idx})">Delete</button>
-      </div></div>`;
+      html += `</div><button class="action-btn btn-del" onclick="confirmDeleteEntry(${idx})">Delete</button></div>
+      </div>`;
     });
 
     html += `</div></div></div>`;
   });
+
   html += '</div>';
   app.innerHTML = html;
 }
@@ -500,14 +430,14 @@ function vocabRowHtml(li, vi, item) {
   </div>`;
 }
 
-// ── VOCAB EDITING ───────────────────────────────────────
+// ── VOCAB EDITING ─────────────────────────────────────────────────────────────
 function startEdit(li, vi) {
   const item = store.lessons[li].vocab[vi];
   const row  = document.getElementById(`vitem-${li}-${vi}`);
   row.innerHTML = `
     <input class="vocab-input" id="et-${li}-${vi}" value="${esc(item.term)}" placeholder="Term" />
     <span></span>
-    <input class="vocab-input" id="ed-${li}-${vi}" value="${esc(item.def)}"  placeholder="Definition" />
+    <input class="vocab-input" id="ed-${li}-${vi}" value="${esc(item.def)}" placeholder="Definition" />
     <button class="vocab-save-btn" onclick="saveEdit(${li},${vi})">Save</button>`;
   row.querySelectorAll('.vocab-input').forEach(inp => {
     inp.addEventListener('keydown', e => {
@@ -529,14 +459,9 @@ function saveEdit(li, vi) {
 
 function addOnEnter(e, li) { if (e.key === 'Enter') addTerm(li); }
 
-// ── COURSE CARD TOGGLE ────────────────────────────────────────
-function toggleCourse(id) {
-  document.getElementById(id).classList.toggle('collapsed');
-}
-
 function addTerm(li) {
-  const tEl  = document.getElementById(`add-term-${li}`);
-  const dEl  = document.getElementById(`add-def-${li}`);
+  const tEl = document.getElementById(`add-term-${li}`);
+  const dEl = document.getElementById(`add-def-${li}`);
   const term = tEl.value.trim(), def = dEl.value.trim();
   if (!term || !def) return;
   store.lessons[li].vocab.push({ term, def });
@@ -546,10 +471,15 @@ function addTerm(li) {
   markChanged();
 }
 
-// ── URL ACTIONS ─────────────────────────────────────────
+// ── COURSE TOGGLE ─────────────────────────────────────────────────────────────
+function toggleCourse(id) {
+  document.getElementById(id).classList.toggle('collapsed');
+}
+
+// ── URL ACTIONS ───────────────────────────────────────────────────────────────
 function buildUrl(vocab) {
   const bytes = new TextEncoder().encode(JSON.stringify(vocab));
-  let binary  = '';
+  let binary = '';
   bytes.forEach(b => binary += String.fromCharCode(b));
   return `${FLASHCARD_BASE}?data=${btoa(binary)}`;
 }
@@ -568,32 +498,50 @@ function copyUrl(li) {
   navigator.clipboard.writeText(url).catch(() => {
     const ta = Object.assign(document.createElement('textarea'), { value: url });
     ta.style.cssText = 'position:fixed;opacity:0';
-    document.body.appendChild(ta); ta.select();
-    document.execCommand('copy'); document.body.removeChild(ta);
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
   });
   const btn = document.querySelector(`#card-${li} .btn-copy`);
   if (btn) { const o = btn.textContent; btn.textContent = '✓ Copied!'; setTimeout(() => btn.textContent = o, 1800); }
 }
 
-// ── DELETION ────────────────────────────────────────────
+// ── DELETION ──────────────────────────────────────────────────────────────────
 function confirmDeleteVocab(li, vi) {
   const term = store.lessons[li].vocab[vi].term;
-  openModal('Delete term?', `Remove "<strong>${esc(term)}</strong>" from this deck?`, () => {
+  openConfirmModal('Delete term?', `Remove "<strong>${esc(term)}</strong>" from this deck?`, 'Delete', () => {
     store.lessons[li].vocab.splice(vi, 1);
     markChanged(); render();
   });
 }
 
 function confirmDeleteEntry(li) {
-  const l     = store.lessons[li];
+  const l = store.lessons[li];
   const label = l.student ? `${l.student} lesson ${l.lessonNum ?? '?'}` : `entry from ${l.sessionId}`;
-  openModal('Delete entry?', `Remove the entry for <strong>${esc(label)}</strong>?`, () => {
+  openConfirmModal('Delete entry?', `Remove the entry for <strong>${esc(label)}</strong>?`, 'Delete', () => {
     store.lessons.splice(li, 1);
     markChanged(); render();
   });
 }
 
-// ── PENDING CHANGES ─────────────────────────────────────
+// ── MODAL ─────────────────────────────────────────────────────────────────────
+function openConfirmModal(title, bodyHtml, okLabel, cb) {
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-body').innerHTML = `<p style="margin-bottom:4px">${bodyHtml}</p>`;
+  document.getElementById('modal-btns').innerHTML = `
+    <button class="modal-btn modal-cancel" onclick="closeModal()">Cancel</button>
+    <button class="modal-btn modal-del" id="modal-ok-btn">${esc(okLabel)}</button>`;
+  document.getElementById('modal-ok-btn').onclick = () => { closeModal(); cb(); };
+  document.getElementById('modal').style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+
+document.getElementById('modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal')) closeModal();
+});
+
+// ── PENDING CHANGES ───────────────────────────────────────────────────────────
 function markChanged() {
   pendingChanges++;
   document.getElementById('change-count').textContent = pendingChanges;
@@ -610,59 +558,19 @@ function flashSaved() {
   setTimeout(() => el.classList.remove('visible'), 3000);
 }
 
-// ── MODAL ───────────────────────────────────────────────
-function openModal(title, body, cb) {
-  document.getElementById('modal-title').textContent = title;
-  document.getElementById('modal-body').innerHTML    = body;
-  modalCb = cb;
-  document.getElementById('modal-ok').onclick = () => { closeModal(); if (modalCb) modalCb(); };
-  document.getElementById('modal').style.display = 'flex';
-}
-function closeModal() { document.getElementById('modal').style.display = 'none'; }
-document.getElementById('modal').addEventListener('click', e => {
-  if (e.target === document.getElementById('modal')) closeModal();
-});
-
-// ── GITHUB API HELPERS ──────────────────────────────────
-const GH_API = 'https://api.github.com';
-
-function ghGet(path) {
-  return fetch(`${GH_API}/${path}`, {
-    headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' }
-  });
-}
-
-function ghPut(path, body) {
-  return fetch(`${GH_API}/${path}`, {
-    method: 'PUT',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: 'application/vnd.github+json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(body)
-  });
-}
-
-// UTF-8 safe base64 encode/decode
+// ── HELPERS ───────────────────────────────────────────────────────────────────
 function encodeBase64Utf8(str) {
   const bytes = new TextEncoder().encode(str);
-  let binary  = '';
+  let binary = '';
   bytes.forEach(b => binary += String.fromCharCode(b));
   return btoa(binary);
-}
-
-function decodeBase64Utf8(b64) {
-  const binary = atob(b64);
-  const bytes  = Uint8Array.from(binary, c => c.charCodeAt(0));
-  return new TextDecoder('utf-8').decode(bytes);
 }
 
 function esc(s) {
   return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-// ── START ────────────────────────────────────────────────
+// ── START ─────────────────────────────────────────────────────────────────────
 boot();
 </script>
 </body>
