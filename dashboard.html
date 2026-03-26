@@ -1,577 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Flashcard Deck Manager</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f0f2f5; color: #1a1a1a; min-height: 100vh; }
-    /* ── TOP BAR ── */
-    .topbar { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 0 28px; height: 56px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; gap: 12px; }
-    .topbar-left { display: flex; align-items: center; gap: 8px; }
-    .topbar-right { display: flex; align-items: center; gap: 8px; }
-    .topbar-title { font-size: 1rem; font-weight: 700; color: #111; letter-spacing: -0.01em; }
-    .topbar-sub { font-size: 0.8rem; color: #999; }
-    .top-btn { padding: 7px 14px; border-radius: 7px; font-size: 0.82rem; font-weight: 600; cursor: pointer; border: none; transition: background 0.15s; white-space: nowrap; }
-    .btn-primary { background: #4f9cf9; color: #fff; }
-    .btn-primary:hover { background: #3b82f6; }
-    .btn-secondary { background: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; }
-    .btn-secondary:hover { background: #e5e7eb; }
-    .btn-success { background: #22c55e; color: #fff; }
-    .btn-success:hover { background: #16a34a; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; }
+    header { background: #fff; border-bottom: 1px solid #e0e0e0; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+    header h1 { font-size: 18px; font-weight: 600; }
+    header h1 span { margin-right: 8px; }
+    .actions { display: flex; gap: 10px; align-items: center; }
+    button { cursor: pointer; border: none; border-radius: 6px; padding: 8px 14px; font-size: 13px; font-weight: 500; }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-secondary { background: #f0f0f0; color: #333; border: 1px solid #ddd; }
+    .btn-secondary:hover { background: #e5e5e5; }
     .btn-danger { background: #ef4444; color: #fff; }
-    .save-indicator { font-size: 0.78rem; color: #22c55e; font-weight: 600; opacity: 0; transition: opacity 0.4s; white-space: nowrap; }
-    .save-indicator.visible { opacity: 1; }
-    /* ── TOKEN MODAL ── */
-    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 20px; }
-    .modal { background: #fff; border-radius: 14px; padding: 28px; max-width: 480px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
-    .modal h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
-    .modal p { font-size: 0.88rem; color: #555; margin-bottom: 16px; line-height: 1.5; }
-    .modal-btns { display: flex; gap: 10px; justify-content: flex-end; margin-top: 16px; }
-    .modal-btn { padding: 8px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 600; border: none; cursor: pointer; }
-    .modal-cancel { background: #f3f4f6; color: #374151; }
-    .modal-cancel:hover { background: #e5e7eb; }
-    .modal-confirm { background: #4f9cf9; color: #fff; }
-    .modal-confirm:hover { background: #3b82f6; }
-    .modal-del { background: #ef4444; color: #fff; }
-    .modal-del:hover { background: #dc2626; }
-    .field-label { font-size: 0.8rem; font-weight: 600; color: #374151; margin-bottom: 5px; display: block; }
-    .field-input { width: 100%; padding: 9px 13px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.88rem; outline: none; transition: border-color 0.15s; margin-bottom: 6px; }
-    .field-input:focus { border-color: #4f9cf9; }
-    .auth-error { font-size: 0.82rem; color: #ef4444; min-height: 20px; margin-bottom: 4px; }
-    .auth-hint { font-size: 0.78rem; color: #9ca3af; margin-top: 10px; line-height: 1.5; }
-    .auth-hint code { background: #f3f4f6; padding: 1px 6px; border-radius: 4px; font-size: 0.76rem; }
-    /* ── LOADING ── */
-    .loading-wrap { display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 56px); }
-    .spinner { width: 32px; height: 32px; border: 3px solid #e5e7eb; border-top-color: #4f9cf9; border-radius: 50%; animation: spin 0.7s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    /* ── CONTAINER ── */
-    .container { max-width: 1100px; margin: 0 auto; padding: 28px 20px; }
-    /* ── EMPTY STATE ── */
-    .empty-state { text-align: center; padding: 80px 20px; color: #888; }
-    .empty-state .icon { font-size: 3rem; margin-bottom: 14px; }
-    .empty-state h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; color: #555; }
-    .empty-state p { font-size: 0.9rem; line-height: 1.6; }
-    /* ── COURSE CARDS ── */
-    .course-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; margin-bottom: 18px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
-    .course-header { display: flex; align-items: center; gap: 10px; padding: 14px 20px; cursor: pointer; user-select: none; transition: background 0.12s; }
-    .course-header:hover { background: #f9fafb; }
-    .course-chevron { font-size: 0.75rem; color: #9ca3af; transition: transform 0.2s; margin-left: auto; flex-shrink: 0; }
-    .course-card.collapsed .course-chevron { transform: rotate(-90deg); }
-    .course-body { border-top: 1px solid #f3f4f6; padding: 16px 16px 20px; overflow: hidden; transition: max-height 0.25s ease, padding 0.25s ease, opacity 0.2s ease; max-height: 9999px; opacity: 1; }
-    .course-card.collapsed .course-body { max-height: 0; padding-top: 0; padding-bottom: 0; opacity: 0; }
-    .student-name { font-size: 1rem; font-weight: 700; color: #111; }
-    .lesson-count { font-size: 0.75rem; background: #e0e7ff; color: #4338ca; border-radius: 20px; padding: 2px 10px; font-weight: 600; }
-    /* ── DECK GRID ── */
-    .deck-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
-    .deck-card { background: #fff; border-radius: 12px; border: 1px solid #e5e7eb; overflow: hidden; transition: box-shadow 0.15s, transform 0.15s; }
-    .deck-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); transform: translateY(-1px); }
-    .deck-card-header { padding: 14px 16px 10px; border-bottom: 1px solid #f3f4f6; display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-    .deck-meta { flex: 1; min-width: 0; }
-    .deck-lesson { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; margin-bottom: 3px; }
-    .deck-date { font-size: 0.78rem; color: #6b7280; }
-    .deck-badge { flex-shrink: 0; padding: 3px 9px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; }
-    .deck-badge.ok { background: #dcfce7; color: #15803d; }
-    .deck-badge.warn { background: #fef9c3; color: #854d0e; }
-    .deck-badge.none { background: #f3f4f6; color: #9ca3af; }
-    /* ── VOCAB LIST ── */
-    .vocab-list { padding: 10px 16px; max-height: 220px; overflow-y: auto; }
-    .vocab-item { display: grid; grid-template-columns: 1fr auto 1fr auto; align-items: start; gap: 4px 8px; padding: 5px 0; border-bottom: 1px solid #f3f4f6; font-size: 0.82rem; }
-    .vocab-item:last-child { border-bottom: none; }
-    .vocab-term { color: #111; font-weight: 500; line-height: 1.4; word-break: break-word; }
-    .vocab-def { color: #6b7280; line-height: 1.4; word-break: break-word; }
-    .vocab-edit-btn { background: none; border: none; color: #d1d5db; cursor: pointer; padding: 2px 3px; border-radius: 4px; font-size: 0.8rem; line-height: 1; transition: color 0.12s, background 0.12s; align-self: start; margin-top: 1px; }
-    .vocab-edit-btn:hover { color: #4f9cf9; background: #eff6ff; }
-    .vocab-input { width: 100%; border: 1px solid #d1d5db; border-radius: 5px; padding: 3px 7px; font-size: 0.82rem; color: #111; outline: none; transition: border-color 0.15s; }
-    .vocab-input:focus { border-color: #4f9cf9; }
-    .vocab-save-btn { padding: 3px 8px; background: #4f9cf9; color: #fff; border: none; border-radius: 5px; font-size: 0.75rem; font-weight: 600; cursor: pointer; white-space: nowrap; align-self: start; margin-top: 1px; }
-    /* ── ADD TERM ── */
-    .add-term-row { padding: 8px 16px; border-top: 1px solid #f3f4f6; display: flex; gap: 6px; align-items: center; }
-    .add-input { flex: 1; border: 1px solid #e5e7eb; border-radius: 6px; padding: 5px 10px; font-size: 0.82rem; outline: none; transition: border-color 0.15s; }
-    .add-input:focus { border-color: #4f9cf9; }
-    .add-btn { padding: 5px 12px; background: #f0f7ff; color: #2563eb; border: 1px solid #bfdbfe; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: background 0.12s; }
-    .add-btn:hover { background: #dbeafe; }
-    /* ── DECK FOOTER ── */
-    .deck-footer { padding: 10px 16px; border-top: 1px solid #f3f4f6; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
-    .footer-left { display: flex; gap: 8px; flex-wrap: wrap; }
-    .action-btn { padding: 6px 13px; border-radius: 7px; font-size: 0.8rem; font-weight: 600; cursor: pointer; border: none; transition: background 0.15s; text-decoration: none; display: inline-block; }
-    .btn-open { background: #4f9cf9; color: #fff; }
-    .btn-open:hover { background: #3b82f6; }
-    .btn-copy { background: #f3f4f6; color: #374151; }
-    .btn-copy:hover { background: #e5e7eb; }
-    .btn-regen { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
-    .btn-regen:hover { background: #dcfce7; }
-    .btn-del { background: #fff1f2; color: #be123c; border: 1px solid #fecdd3; }
-    .btn-del:hover { background: #ffe4e6; }
-    /* ── PENDING CHANGES BAR ── */
-    .changes-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff; padding: 12px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; z-index: 90; transform: translateY(100%); transition: transform 0.25s ease; }
-    .changes-bar.visible { transform: translateY(0); }
-    .changes-bar p { font-size: 0.87rem; }
-    .changes-bar strong { color: #fbbf24; }
-    .changes-btns { display: flex; gap: 8px; }
-    .vocab-list::-webkit-scrollbar { width: 4px; }
-    .vocab-list::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 4px; }
+    .btn-danger:hover { background: #dc2626; }
+    main { padding: 24px; max-width: 1100px; margin: 0 auto; }
+    #status { text-align: center; padding: 60px 20px; color: #888; font-size: 15px; }
+    #status.error { color: #ef4444; }
+    table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+    thead th { background: #f9f9f9; padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: #666; border-bottom: 1px solid #eee; }
+    tbody tr { border-bottom: 1px solid #f0f0f0; transition: background .1s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #fafafa; }
+    td { padding: 12px 16px; font-size: 14px; vertical-align: middle; }
+    .tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: 500; }
+    .tag-student { background: #dbeafe; color: #1d4ed8; }
+    .tag-lesson { background: #fef3c7; color: #92400e; }
+    a.deck-link { color: #2563eb; text-decoration: none; font-size: 13px; }
+    a.deck-link:hover { text-decoration: underline; }
+    .vocab-list { font-size: 12px; color: #666; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .audio-badge { font-size: 12px; color: #059669; font-weight: 500; }
+    .no-audio { font-size: 12px; color: #aaa; }
+
+    /* Modal */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 100; align-items: center; justify-content: center; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: #fff; border-radius: 12px; padding: 28px; width: 440px; max-width: 95vw; box-shadow: 0 8px 32px rgba(0,0,0,.18); }
+    .modal h2 { font-size: 17px; margin-bottom: 8px; }
+    .modal p { font-size: 14px; color: #555; margin-bottom: 18px; line-height: 1.5; }
+    .modal input { width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; font-family: monospace; margin-bottom: 16px; outline: none; }
+    .modal input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.15); }
+    .modal .row { display: flex; gap: 10px; justify-content: flex-end; }
+    .modal-error { color: #ef4444; font-size: 13px; margin-bottom: 10px; display: none; }
   </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <div class="topbar-left">
-    <span class="topbar-title">📚 Flashcard Deck Manager</span>
-    <span class="topbar-sub" id="deck-count"></span>
+<header>
+  <h1><span>🗂</span>Flashcard Deck Manager</h1>
+  <div class="actions">
+    <button class="btn-secondary" onclick="loadData()">↻ Refresh</button>
+    <button class="btn-primary" onclick="pushChanges()">Push to GitHub ↑</button>
   </div>
-  <div class="topbar-right">
-    <span class="save-indicator" id="save-indicator">✓ Saved to GitHub</span>
-    <button class="top-btn btn-secondary" id="refresh-btn" onclick="loadData()">↺ Refresh</button>
+</header>
+
+<main>
+  <div id="status">Loading…</div>
+  <div id="table-wrap" style="display:none">
+    <table>
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th>Lesson #</th>
+          <th>Date</th>
+          <th>Flashcard Deck</th>
+          <th>Vocab</th>
+          <th>Audio</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
   </div>
-</div>
+</main>
 
-<!-- MAIN CONTENT -->
-<div id="app"></div>
-
-<!-- PENDING CHANGES BAR -->
-<div class="changes-bar" id="changes-bar">
-  <p>You have <strong id="change-count">0</strong> unsaved change(s). Changes are not live until pushed to GitHub.</p>
-  <div class="changes-btns">
-    <button class="top-btn btn-secondary" onclick="discardChanges()" style="color:#fff;border-color:#475569">Discard</button>
-    <button class="top-btn btn-success" onclick="pushChanges()">Push to GitHub ↑</button>
-  </div>
-</div>
-
-<!-- GENERIC MODAL (delete confirm + token prompt) -->
-<div class="modal-overlay" id="modal" style="display:none">
+<!-- Token modal (only shown when pushing) -->
+<div class="modal-overlay" id="token-modal">
   <div class="modal">
-    <h2 id="modal-title"></h2>
-    <div id="modal-body"></div>
-    <div class="modal-btns" id="modal-btns"></div>
+    <h2>🔑 GitHub Token Required</h2>
+    <p>Enter a Personal Access Token with <strong>repo</strong> scope to push changes to GitHub. It will be saved in your browser for next time.</p>
+    <input type="password" id="token-input" placeholder="ghp_…" autocomplete="off"/>
+    <div class="modal-error" id="token-error"></div>
+    <div class="row">
+      <button class="btn-secondary" onclick="closeTokenModal()">Cancel</button>
+      <button class="btn-primary" onclick="submitToken()">Save &amp; Push</button>
+    </div>
   </div>
 </div>
 
 <script>
-// ── CONFIG ────────────────────────────────────────────────────────────────────
-const GH_OWNER       = 'nicc122';
-const GH_REPO        = 'lessongen';
-const GH_FILE        = 'lesson-store.json';
-const GH_BRANCH      = 'main';
-const FLASHCARD_BASE = 'https://nicc122.github.io/flashcards/flashcards.html';
-const TOKEN_KEY      = 'gh_dashboard_token';
+  const GH_OWNER  = 'nicc122';
+  const GH_REPO   = 'lessongen';
+  const GH_BRANCH = 'main';
+  const GH_FILE   = 'lesson-store.json';
+  const TOKEN_KEY  = 'gh_pat';
 
-// Raw public URL — no token needed for reading
-const RAW_URL = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_BRANCH}/${GH_FILE}`;
-const GH_API  = 'https://api.github.com';
+  const RAW_URL = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_BRANCH}/${GH_FILE}`;
+  const API_URL = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}`;
 
-// ── STATE ─────────────────────────────────────────────────────────────────────
-let store         = null;
-let originalSha   = null;  // needed for GitHub PUT
-let originalJson  = '';
-let pendingChanges = 0;
+  let storeData   = null;
+  let originalSha = null;
+  let tokenResolve = null;
 
-// ── BOOT ──────────────────────────────────────────────────────────────────────
-function boot() {
-  showLoading();
-  loadData();
-}
-
-// ── LOAD — public raw URL, no token required ──────────────────────────────────
-function showLoading() {
-  document.getElementById('app').innerHTML =
-    '<div class="loading-wrap"><div class="spinner"></div></div>';
-}
-
-async function loadData() {
-  showLoading();
-  try {
-    // 1. Load content via public raw URL (no auth)
-    const rawRes = await fetch(RAW_URL + '?t=' + Date.now()); // cache-bust
-    if (!rawRes.ok) throw new Error(`HTTP ${rawRes.status}`);
-    const json = await rawRes.text();
-    store = JSON.parse(json);
-    originalJson = json;
-    pendingChanges = 0;
-    hidePendingBar();
-
-    // 2. Fetch SHA separately via API (needed only if/when we push)
-    //    Do this quietly in the background — failures are non-fatal for reading.
-    fetchSha().catch(() => {});
-
-    render();
-  } catch (err) {
-    document.getElementById('app').innerHTML = `
-      <div class="loading-wrap" style="flex-direction:column;gap:12px">
-        <p style="color:#ef4444;font-weight:600">Failed to load: ${esc(err.message)}</p>
-        <button class="top-btn btn-primary" onclick="loadData()">Retry</button>
-      </div>`;
-  }
-}
-
-// Fetch SHA so we have it ready when the user pushes (uses stored token if available)
-async function fetchSha() {
-  const t = localStorage.getItem(TOKEN_KEY) || '';
-  const headers = { Accept: 'application/vnd.github+json' };
-  if (t) headers['Authorization'] = `Bearer ${t}`;
-  const res = await fetch(`${GH_API}/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}?ref=${GH_BRANCH}`, { headers });
-  if (!res.ok) return;
-  const data = await res.json();
-  originalSha = data.sha;
-}
-
-// ── PUSH — asks for token only when needed ────────────────────────────────────
-async function pushChanges() {
-  if (!store) return;
-
-  let token = localStorage.getItem(TOKEN_KEY) || '';
-
-  // If no SHA yet (token was never provided), we need one to push
-  if (!originalSha || !token) {
-    token = await promptForToken();
-    if (!token) return; // user cancelled
+  // ── Load ──────────────────────────────────────────────
+  async function loadData() {
+    setStatus('Loading…');
+    try {
+      const res = await fetch(RAW_URL + '?t=' + Date.now());
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      storeData = await res.json();
+      renderTable(storeData);
+      // Fetch SHA in background (needed for push, not for display)
+      fetchSha().catch(() => {});
+    } catch (err) {
+      setStatus(`Failed to load: ${err.message}`, true);
+    }
   }
 
-  await doPush(token);
-}
+  async function fetchSha() {
+    const token = localStorage.getItem(TOKEN_KEY);
+    const headers = { 'Accept': 'application/vnd.github+json' };
+    if (token) headers['Authorization'] = `Bearer ${token}`;
+    const r = await fetch(API_URL, { headers });
+    if (r.ok) {
+      const j = await r.json();
+      originalSha = j.sha;
+    }
+  }
 
-function promptForToken() {
-  return new Promise(resolve => {
-    const savedToken = localStorage.getItem(TOKEN_KEY) || '';
-    document.getElementById('modal-title').textContent = '🔑 GitHub token needed to push';
-    document.getElementById('modal-body').innerHTML = `
-      <p style="margin-bottom:12px">A token with <strong>Contents: Read and write</strong> permission on <code style="background:#f3f4f6;padding:1px 5px;border-radius:4px">nicc122/lessongen</code> is needed to save changes.<br><br>It will be stored in this browser only.</p>
-      <label class="field-label">GitHub Personal Access Token</label>
-      <input class="field-input" id="push-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" value="${esc(savedToken)}" />
-      <div class="auth-error" id="push-token-error"></div>
-      <div class="auth-hint">
-        GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens<br>
-        Repository: <code>nicc122/lessongen</code> · Permission: <code>Contents: Read and write</code>
-      </div>`;
-    document.getElementById('modal-btns').innerHTML = `
-      <button class="modal-btn modal-cancel" id="modal-cancel-btn">Cancel</button>
-      <button class="modal-btn modal-confirm" id="modal-ok-btn">Push ↑</button>`;
-    document.getElementById('modal').style.display = 'flex';
+  // ── Render ────────────────────────────────────────────
+  function renderTable(data) {
+    const lessons = (data.lessons || []).slice().reverse();
+    if (lessons.length === 0) {
+      setStatus('No lessons found in store.');
+      return;
+    }
+    const tbody = document.getElementById('tbody');
+    tbody.innerHTML = '';
+    lessons.forEach((l, idx) => {
+      const date = l.sessionId ? new Date(l.sessionId).toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' }) : '—';
+      const vocabTerms = (l.vocab || []).map(v => v.term).join(', ');
+      const audioName  = l.audioPath ? l.audioPath.split('/').pop() : null;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><span class="tag tag-student">${esc(l.student || '—')}</span></td>
+        <td><span class="tag tag-lesson">Lesson ${esc(String(l.lessonNum ?? '—'))}</span></td>
+        <td>${date}</td>
+        <td>${l.flashcardUrl
+          ? `<a class="deck-link" href="${esc(l.flashcardUrl)}" target="_blank">Open deck ↗</a>`
+          : '<span style="color:#aaa;font-size:13px">—</span>'}</td>
+        <td><div class="vocab-list" title="${esc(vocabTerms)}">${vocabTerms ? esc(vocabTerms) : '<span style="color:#aaa">—</span>'}</div></td>
+        <td>${audioName
+          ? `<span class="audio-badge">🎵 ${esc(audioName)}</span>`
+          : '<span class="no-audio">—</span>'}</td>
+        <td><button class="btn-danger" style="font-size:12px;padding:5px 10px" onclick="deleteEntry(${lessons.length - 1 - idx})">Delete</button></td>
+      `;
+      tbody.appendChild(tr);
+    });
+    document.getElementById('table-wrap').style.display = 'block';
+    document.getElementById('status').style.display = 'none';
+  }
 
-    const okBtn = document.getElementById('modal-ok-btn');
-    const cancelBtn = document.getElementById('modal-cancel-btn');
-    const input = document.getElementById('push-token-input');
+  function esc(str) {
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
 
-    function finish(t) {
-      closeModal();
-      resolve(t);
+  function setStatus(msg, isError) {
+    const el = document.getElementById('status');
+    el.textContent = msg;
+    el.className = isError ? 'error' : '';
+    el.style.display = 'block';
+    document.getElementById('table-wrap').style.display = 'none';
+  }
+
+  // ── Delete ────────────────────────────────────────────
+  function deleteEntry(index) {
+    if (!storeData) return;
+    const entry = storeData.lessons[index];
+    if (!confirm(`Delete entry for ${entry.student || '?'} Lesson ${entry.lessonNum ?? '?'}?\n\nThis will be saved when you push to GitHub.`)) return;
+    storeData.lessons.splice(index, 1);
+    renderTable(storeData);
+  }
+
+  // ── Push ──────────────────────────────────────────────
+  async function pushChanges() {
+    if (!storeData) { alert('No data loaded.'); return; }
+
+    let token = localStorage.getItem(TOKEN_KEY) || '';
+    if (!token) {
+      token = await promptForToken();
+      if (!token) return;
     }
 
-    okBtn.onclick = () => {
-      const t = input.value.trim();
-      if (!t) { document.getElementById('push-token-error').textContent = 'Please enter a token.'; return; }
-      localStorage.setItem(TOKEN_KEY, t);
-      finish(t);
-    };
-    cancelBtn.onclick = () => finish(null);
-    input.onkeydown = e => { if (e.key === 'Enter') okBtn.click(); if (e.key === 'Escape') finish(null); };
-    setTimeout(() => input.focus(), 50);
-  });
-}
-
-async function doPush(token) {
-  const btn = document.querySelector('#changes-bar .btn-success');
-  const orig = btn.textContent;
-  btn.textContent = 'Pushing…';
-  btn.disabled = true;
-
-  try {
-    // Re-fetch SHA fresh if we don't have it
+    // Fetch SHA if we don't have it yet
     if (!originalSha) {
-      const shaRes = await fetch(`${GH_API}/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}?ref=${GH_BRANCH}`, {
-        headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' }
+      try {
+        const r = await fetch(API_URL, { headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' } });
+        if (r.ok) { const j = await r.json(); originalSha = j.sha; }
+      } catch(e) {}
+    }
+
+    await doPush(token);
+  }
+
+  async function doPush(token) {
+    try {
+      const content = btoa(unescape(encodeURIComponent(JSON.stringify(storeData, null, 2))));
+      const body = { message: 'dashboard: update lesson-store.json', content, branch: GH_BRANCH };
+      if (originalSha) body.sha = originalSha;
+
+      const res = await fetch(API_URL, {
+        method: 'PUT',
+        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github+json' },
+        body: JSON.stringify(body)
       });
-      if (!shaRes.ok) throw new Error(`Could not fetch SHA: HTTP ${shaRes.status}`);
-      const shaData = await shaRes.json();
-      originalSha = shaData.sha;
-    }
 
-    const newJson = JSON.stringify(store, null, 2);
-    const res = await fetch(`${GH_API}/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}`, {
-      method: 'PUT',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: 'application/vnd.github+json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        message: 'dashboard: update lesson-store.json',
-        content: encodeBase64Utf8(newJson),
-        sha: originalSha,
-        branch: GH_BRANCH
-      })
-    });
-
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      // Bad credentials — clear saved token so they'll be prompted again
-      if (res.status === 401 || res.status === 403) {
-        localStorage.removeItem(TOKEN_KEY);
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        if (res.status === 401) {
+          localStorage.removeItem(TOKEN_KEY);
+          document.getElementById('token-error').textContent = 'Token invalid or expired. Enter a new one.';
+          document.getElementById('token-error').style.display = 'block';
+          const token2 = await promptForToken();
+          if (token2) await doPush(token2);
+          return;
+        }
+        throw new Error(err.message || `HTTP ${res.status}`);
       }
-      throw new Error(err.message || `HTTP ${res.status}`);
+
+      const j = await res.json();
+      originalSha = j.content.sha;
+      localStorage.setItem(TOKEN_KEY, token);
+      alert('✅ Pushed to GitHub successfully!');
+    } catch (err) {
+      alert('Push failed: ' + err.message);
     }
-
-    const data = await res.json();
-    originalSha = data.content.sha;
-    originalJson = newJson;
-    pendingChanges = 0;
-    hidePendingBar();
-    flashSaved();
-  } catch (err) {
-    alert('Push failed: ' + err.message);
-  } finally {
-    btn.textContent = orig;
-    btn.disabled = false;
-  }
-}
-
-function discardChanges() {
-  store = JSON.parse(originalJson);
-  pendingChanges = 0;
-  hidePendingBar();
-  render();
-}
-
-// ── RENDER ────────────────────────────────────────────────────────────────────
-function render() {
-  const app = document.getElementById('app');
-  if (!store || !store.lessons || store.lessons.length === 0) {
-    app.innerHTML = `<div class="container"><div class="empty-state">
-      <div class="icon">📭</div><h2>No lessons found</h2>
-      <p>No entries in lesson-store.json yet.</p>
-    </div></div>`;
-    document.getElementById('deck-count').textContent = '';
-    return;
   }
 
-  const grouped = {}, order = [];
-  [...store.lessons].reverse().forEach(lesson => {
-    const key = lesson.student || '(no student)';
-    if (!grouped[key]) { grouped[key] = []; order.push(key); }
-    grouped[key].push(lesson);
-  });
-
-  const total = store.lessons.filter(l => l.vocab && l.vocab.length > 0).length;
-  document.getElementById('deck-count').textContent =
-    `${store.lessons.length} entries · ${total} with vocab`;
-
-  let html = '<div class="container">';
-  order.forEach(student => {
-    const lessons = grouped[student];
-    const sid = 'course-' + student.replace(/[^a-z0-9]/gi, '_');
-    html += `<div class="course-card" id="${sid}">
-      <div class="course-header" onclick="toggleCourse('${sid}')">
-        <span class="student-name">${esc(student)}</span>
-        <span class="lesson-count">${lessons.length} lesson${lessons.length !== 1 ? 's' : ''}</span>
-        <span class="course-chevron">▼</span>
-      </div>
-      <div class="course-body"><div class="deck-grid">`;
-
-    lessons.forEach(lesson => {
-      const idx   = store.lessons.indexOf(lesson);
-      const vocab = lesson.vocab || [];
-      const hasUrl = !!lesson.flashcardUrl;
-      const date = lesson.sessionId
-        ? new Date(lesson.sessionId).toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'})
-        : '—';
-      const lessonLabel = lesson.lessonNum ? `Lesson ${lesson.lessonNum}` : 'Lesson';
-      const badgeClass = vocab.length === 0 ? 'none' : hasUrl ? 'ok' : 'warn';
-      const badgeText  = vocab.length === 0 ? 'No vocab' : hasUrl ? `${vocab.length} terms` : `${vocab.length} terms · no URL`;
-
-      html += `<div class="deck-card" id="card-${idx}">
-        <div class="deck-card-header">
-          <div class="deck-meta">
-            <div class="deck-lesson">${esc(lessonLabel)}</div>
-            <div class="deck-date">${date}</div>
-          </div>
-          <span class="deck-badge ${badgeClass}">${badgeText}</span>
-        </div>`;
-
-      if (vocab.length > 0) {
-        html += `<div class="vocab-list" id="vlist-${idx}">`;
-        vocab.forEach((item, vi) => { html += vocabRowHtml(idx, vi, item); });
-        html += `</div>
-        <div class="add-term-row">
-          <input class="add-input" id="add-term-${idx}" placeholder="Term…" onkeydown="addOnEnter(event,${idx})" />
-          <input class="add-input" id="add-def-${idx}" placeholder="Definition / translation…" onkeydown="addOnEnter(event,${idx})" />
-          <button class="add-btn" onclick="addTerm(${idx})">+ Add</button>
-        </div>`;
-      } else {
-        html += `<div style="padding:14px 16px;font-size:0.82rem;color:#9ca3af;">No vocab for this entry.</div>`;
-      }
-
-      html += `<div class="deck-footer"><div class="footer-left">`;
-      if (hasUrl) {
-        html += `<a class="action-btn btn-open" href="${esc(lesson.flashcardUrl)}" target="_blank">Open ↗</a>
-                 <button class="action-btn btn-copy" onclick="copyUrl(${idx})">Copy URL</button>`;
-      }
-      if (vocab.length > 0) {
-        html += `<button class="action-btn btn-regen" onclick="regenUrl(${idx})">↺ Regen URL</button>`;
-      }
-      html += `</div><button class="action-btn btn-del" onclick="confirmDeleteEntry(${idx})">Delete</button></div>
-      </div>`;
+  // ── Token modal ───────────────────────────────────────
+  function promptForToken() {
+    return new Promise(resolve => {
+      tokenResolve = resolve;
+      document.getElementById('token-input').value = '';
+      document.getElementById('token-error').style.display = 'none';
+      document.getElementById('token-modal').classList.add('open');
+      document.getElementById('token-input').focus();
     });
+  }
 
-    html += `</div></div></div>`;
-  });
+  function submitToken() {
+    const val = document.getElementById('token-input').value.trim();
+    if (!val) { document.getElementById('token-error').textContent = 'Please enter a token.'; document.getElementById('token-error').style.display = 'block'; return; }
+    document.getElementById('token-modal').classList.remove('open');
+    if (tokenResolve) { tokenResolve(val); tokenResolve = null; }
+  }
 
-  html += '</div>';
-  app.innerHTML = html;
-}
+  function closeTokenModal() {
+    document.getElementById('token-modal').classList.remove('open');
+    if (tokenResolve) { tokenResolve(null); tokenResolve = null; }
+  }
 
-function vocabRowHtml(li, vi, item) {
-  return `<div class="vocab-item" id="vitem-${li}-${vi}">
-    <span class="vocab-term">${esc(item.term)}</span>
-    <button class="vocab-edit-btn" onclick="startEdit(${li},${vi})" title="Edit">✏️</button>
-    <span class="vocab-def">${esc(item.def)}</span>
-    <button class="vocab-edit-btn" onclick="confirmDeleteVocab(${li},${vi})" title="Delete">🗑</button>
-  </div>`;
-}
+  document.getElementById('token-input').addEventListener('keydown', e => { if (e.key === 'Enter') submitToken(); });
 
-// ── VOCAB EDITING ─────────────────────────────────────────────────────────────
-function startEdit(li, vi) {
-  const item = store.lessons[li].vocab[vi];
-  const row  = document.getElementById(`vitem-${li}-${vi}`);
-  row.innerHTML = `
-    <input class="vocab-input" id="et-${li}-${vi}" value="${esc(item.term)}" placeholder="Term" />
-    <span></span>
-    <input class="vocab-input" id="ed-${li}-${vi}" value="${esc(item.def)}" placeholder="Definition" />
-    <button class="vocab-save-btn" onclick="saveEdit(${li},${vi})">Save</button>`;
-  row.querySelectorAll('.vocab-input').forEach(inp => {
-    inp.addEventListener('keydown', e => {
-      if (e.key === 'Enter')  saveEdit(li, vi);
-      if (e.key === 'Escape') { row.outerHTML = vocabRowHtml(li, vi, item); }
-    });
-  });
-  document.getElementById(`et-${li}-${vi}`).focus();
-}
-
-function saveEdit(li, vi) {
-  const term = document.getElementById(`et-${li}-${vi}`).value.trim();
-  const def  = document.getElementById(`ed-${li}-${vi}`).value.trim();
-  if (!term && !def) return;
-  store.lessons[li].vocab[vi] = { term, def };
-  document.getElementById(`vitem-${li}-${vi}`).outerHTML = vocabRowHtml(li, vi, { term, def });
-  markChanged();
-}
-
-function addOnEnter(e, li) { if (e.key === 'Enter') addTerm(li); }
-
-function addTerm(li) {
-  const tEl = document.getElementById(`add-term-${li}`);
-  const dEl = document.getElementById(`add-def-${li}`);
-  const term = tEl.value.trim(), def = dEl.value.trim();
-  if (!term || !def) return;
-  store.lessons[li].vocab.push({ term, def });
-  const vi = store.lessons[li].vocab.length - 1;
-  document.getElementById(`vlist-${li}`).insertAdjacentHTML('beforeend', vocabRowHtml(li, vi, { term, def }));
-  tEl.value = ''; dEl.value = ''; tEl.focus();
-  markChanged();
-}
-
-// ── COURSE TOGGLE ─────────────────────────────────────────────────────────────
-function toggleCourse(id) {
-  document.getElementById(id).classList.toggle('collapsed');
-}
-
-// ── URL ACTIONS ───────────────────────────────────────────────────────────────
-function buildUrl(vocab) {
-  const bytes = new TextEncoder().encode(JSON.stringify(vocab));
-  let binary = '';
-  bytes.forEach(b => binary += String.fromCharCode(b));
-  return `${FLASHCARD_BASE}?data=${btoa(binary)}`;
-}
-
-function regenUrl(li) {
-  const vocab = store.lessons[li].vocab;
-  if (!vocab || vocab.length === 0) return;
-  store.lessons[li].flashcardUrl = buildUrl(vocab);
-  markChanged();
-  render();
-}
-
-function copyUrl(li) {
-  const url = store.lessons[li].flashcardUrl;
-  if (!url) return;
-  navigator.clipboard.writeText(url).catch(() => {
-    const ta = Object.assign(document.createElement('textarea'), { value: url });
-    ta.style.cssText = 'position:fixed;opacity:0';
-    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-  });
-  const btn = document.querySelector(`#card-${li} .btn-copy`);
-  if (btn) { const o = btn.textContent; btn.textContent = '✓ Copied!'; setTimeout(() => btn.textContent = o, 1800); }
-}
-
-// ── DELETION ──────────────────────────────────────────────────────────────────
-function confirmDeleteVocab(li, vi) {
-  const term = store.lessons[li].vocab[vi].term;
-  openConfirmModal('Delete term?', `Remove "<strong>${esc(term)}</strong>" from this deck?`, 'Delete', () => {
-    store.lessons[li].vocab.splice(vi, 1);
-    markChanged(); render();
-  });
-}
-
-function confirmDeleteEntry(li) {
-  const l = store.lessons[li];
-  const label = l.student ? `${l.student} lesson ${l.lessonNum ?? '?'}` : `entry from ${l.sessionId}`;
-  openConfirmModal('Delete entry?', `Remove the entry for <strong>${esc(label)}</strong>?`, 'Delete', () => {
-    store.lessons.splice(li, 1);
-    markChanged(); render();
-  });
-}
-
-// ── MODAL ─────────────────────────────────────────────────────────────────────
-function openConfirmModal(title, bodyHtml, okLabel, cb) {
-  document.getElementById('modal-title').textContent = title;
-  document.getElementById('modal-body').innerHTML = `<p style="margin-bottom:4px">${bodyHtml}</p>`;
-  document.getElementById('modal-btns').innerHTML = `
-    <button class="modal-btn modal-cancel" onclick="closeModal()">Cancel</button>
-    <button class="modal-btn modal-del" id="modal-ok-btn">${esc(okLabel)}</button>`;
-  document.getElementById('modal-ok-btn').onclick = () => { closeModal(); cb(); };
-  document.getElementById('modal').style.display = 'flex';
-}
-
-function closeModal() {
-  document.getElementById('modal').style.display = 'none';
-}
-
-document.getElementById('modal').addEventListener('click', e => {
-  if (e.target === document.getElementById('modal')) closeModal();
-});
-
-// ── PENDING CHANGES ───────────────────────────────────────────────────────────
-function markChanged() {
-  pendingChanges++;
-  document.getElementById('change-count').textContent = pendingChanges;
-  document.getElementById('changes-bar').classList.add('visible');
-}
-
-function hidePendingBar() {
-  document.getElementById('changes-bar').classList.remove('visible');
-}
-
-function flashSaved() {
-  const el = document.getElementById('save-indicator');
-  el.classList.add('visible');
-  setTimeout(() => el.classList.remove('visible'), 3000);
-}
-
-// ── HELPERS ───────────────────────────────────────────────────────────────────
-function encodeBase64Utf8(str) {
-  const bytes = new TextEncoder().encode(str);
-  let binary = '';
-  bytes.forEach(b => binary += String.fromCharCode(b));
-  return btoa(binary);
-}
-
-function esc(s) {
-  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-// ── START ─────────────────────────────────────────────────────────────────────
-boot();
+  // ── Init ──────────────────────────────────────────────
+  loadData();
 </script>
 </body>
 </html>
