@@ -1,0 +1,730 @@
+{
+  "lessons": [
+    {
+      "sessionId": "2026-03-03T18:08:07.362Z",
+      "audioPath": "/Users/nick/Documents/GitHub/lessongen/audio_output/lesson_2026-03-03-18-07-52_complete.mp3",
+      "flashcardUrl": "https://nicc122.github.io/lessongen/flashcards.html?data=W3sidGVybSI6InlvdXIgdGhvdWdodHMiLCJkZWYiOiJsZSB0dWUgb3BpbmlvbmkifSx7InRlcm0iOiJ5b3UnZCBiZSBvcGVuIHRvIiwiZGVmIjoic2FyZXN0aSBkaXNwb3N0byBhIn0seyJ0ZXJtIjoiZXhjbHVzaXZpdHkiLCJkZWYiOiJlc2NsdXNpdml0w6AifSx7InRlcm0iOiJsb3dlciIsImRlZiI6InBpw7kgYmFzc2kifSx7InRlcm0iOiJyZXZpc2VkIiwiZGVmIjoicml2aXN0aSJ9LHsidGVybSI6ImJlZm9yZWhhbmQiLCJkZWYiOiJpbiBhbnRpY2lwbyJ9XQ==",
+      "vocab": [
+        {
+          "term": "your thoughts",
+          "def": "le tue opinioni"
+        },
+        {
+          "term": "you'd be open to",
+          "def": "saresti disposto a"
+        },
+        {
+          "term": "exclusivity",
+          "def": "esclusività"
+        },
+        {
+          "term": "lower",
+          "def": "più bassi"
+        },
+        {
+          "term": "revised",
+          "def": "rivisti"
+        },
+        {
+          "term": "beforehand",
+          "def": "in anticipo"
+        }
+      ]
+    },
+    {
+      "sessionId": "2026-03-04T09:43:05.558Z",
+      "audioPath": "/Users/nick/Documents/GitHub/lessongen/audio_output/lesson_2026-03-04-09-42-50_complete.mp3",
+      "flashcardUrl": "https://nicc122.github.io/flashcards/flashcards.html?data=W3sidGVybSI6InByZWRpY3RhYmxlIG9yZGVycyIsImRlZiI6Im9yZGluaSBwcmV2ZWRpYmlsaSJ9LHsidGVybSI6Indob2xlIHllYXIiLCJkZWYiOiJhbm5vIGludGVybyJ9LHsidGVybSI6ImV4cGFuZGluZyIsImRlZiI6ImluIGVzcGFuc2lvbmUifSx7InRlcm0iOiJpbmNyZWFzZSIsImRlZiI6ImF1bWVudGFyZSJ9LHsidGVybSI6ImFuIGFuc3dlciIsImRlZiI6InVuYSByaXNwb3N0YSJ9LHsidGVybSI6IkkgbG9vayBmb3J3YXJkIHRvIiwiZGVmIjoibm9uIHZlZG8gbCdvcmEgZGkifV0=",
+      "vocab": [
+        {
+          "term": "predictable orders",
+          "def": "ordini prevedibili"
+        },
+        {
+          "term": "whole year",
+          "def": "anno intero"
+        },
+        {
+          "term": "expanding",
+          "def": "in espansione"
+        },
+        {
+          "term": "increase",
+          "def": "aumentare"
+        },
+        {
+          "term": "an answer",
+          "def": "una risposta"
+        },
+        {
+          "term": "I look forward to",
+          "def": "non vedo l'ora di"
+        }
+      ]
+    },
+    {
+      "sessionId": "2026-03-04T17:40:12.359Z",
+      "student": "CMOcycL2",
+      "lessonNum": 2,
+      "audioPath": "/Users/nick/Documents/GitHub/lessongen/audio_output/CMOcycL2_lesson2_complete.mp3",
+      "flashcardUrl": null,
+      "vocab": []
+    },
+    {
+      "sessionId": "2026-03-05T08:30:19.827Z",
+      "student": "CEOprocL2",
+      "lessonNum": 2,
+      "audioPath": "/Users/nick/Documents/GitHub/lessongen/audio_output/CEOprocL2CMOcycL2CEOprocL2CMOcycL2_lesson2_complete.mp3",
+      "flashcardUrl": "https://nicc122.github.io/flashcards/flashcards.html?data=W3sidGVybSI6Im1haW4gc3RlcHMiLCJkZWYiOiJmYXNpIHByaW5jaXBhbGkifSx7InRlcm0iOiJ5b3VyIHNlY3RvciIsImRlZiI6ImlsIHZvc3RybyBzZXR0b3JlIn0seyJ0ZXJtIjoic3VwcGxpZXJzIiwiZGVmIjoiZm9ybml0b3JpIn0seyJ0ZXJtIjoiaWRlbnRpZnkiLCJkZWYiOiJpZGVudGlmaWNhcmUifSx7InRlcm0iOiJtYXRjaCIsImRlZiI6ImNvcnJpc3BvbmRlcmUifSx7InRlcm0iOiJzdWJtaXQiLCJkZWYiOiJwcmVzZW50YXJlIn0seyJ0ZXJtIjoiZGVwZW5kaW5nIG9uIiwiZGVmIjoiYSBzZWNvbmRhIGRpIn1d",
+      "vocab": [
+        {
+          "term": "main steps",
+          "def": "fasi principali"
+        },
+        {
+          "term": "your sector",
+          "def": "il vostro settore"
+        },
+        {
+          "term": "suppliers",
+          "def": "fornitori"
+        },
+        {
+          "term": "identify",
+          "def": "identificare"
+        },
+        {
+          "term": "match",
+          "def": "corrispondere"
+        },
+        {
+          "term": "submit",
+          "def": "presentare"
+        },
+        {
+          "term": "depending on",
+          "def": "a seconda di"
+        }
+      ]
+    },
+    {
+      "sessionId": "2026-03-05T12:34:56.001Z",
+      "student": "COOvetL2",
+      "lessonNum": 10,
+      "audioPath": "/Users/nick/Documents/GitHub/lessongen/audio_output/COOvetL2_lesson10_complete.mp3",
+      "flashcardUrl": "https://nicc122.github.io/flashcards/flashcards.html?data=W3sidGVybSI6InJlcG9ydCBvbiIsImRlZiI6InJpZmVyaXJlIHN1In0seyJ0ZXJtIjoic3VjY2Vzc2Z1bGx5IGRlcGxveWVkIiwiZGVmIjoiaW1wbGVtZW50YXRvIGNvbiBzdWNjZXNzbyJ9LHsidGVybSI6InN1YnVyYmFuIiwiZGVmIjoic3VidXJiYW5lIn0seyJ0ZXJtIjoiZnVsbHkgb3BlcmF0aW9uYWwiLCJkZWYiOiJjb21wbGV0YW1lbnRlIG9wZXJhdGl2ZSJ9LHsidGVybSI6InJ1cmFsIGluc3RhbGxhdGlvbnMiLCJkZWYiOiJpbnN0YWxsYXppb25pIHJ1cmFsaSJ9LHsidGVybSI6ImNvbm5lY3Rpdml0eSBpc3N1ZXMiLCJkZWYiOiJwcm9ibGVtaSBkaSBjb25uZXR0aXZpdMOgIn0seyJ0ZXJtIjoiYnkgbW9udGgtZW5kIiwiZGVmIjoiZW50cm8gZmluZSBtZXNlIn1d",
+      "vocab": [
+        {
+          "term": "report on",
+          "def": "riferire su"
+        },
+        {
+          "term": "successfully deployed",
+          "def": "implementato con successo"
+        },
+        {
+          "term": "suburban",
+          "def": "suburbane"
+        },
+        {
+          "term": "fully operational",
+          "def": "completamente operative"
+        },
+        {
+          "term": "rural installations",
+          "def": "installazioni rurali"
+        },
+        {
+          "term": "connectivity issues",
+          "def": "problemi di connettività"
+        },
+        {
+          "term": "by month-end",
+          "def": "entro fine mese"
+        }
+      ]
+    },
+    {
+      "sessionId": "2026-03-05T16:00:19.394Z",
+      "student": "LAWlabourL2",
+      "lessonNum": 1,
+      "audioPath": "/Users/nick/Documents/GitHub/lessongen/audio_output/LAWlabourL2_lesson1_complete.mp3",
+      "flashcardUrl": "https://nicc122.github.io/flashcards/flashcards.html?data=W3sidGVybSI6Im1haW4gcGFydHMiLCJkZWYiOiJwYXJ0aSBwcmluY2lwYWxpIn0seyJ0ZXJtIjoibG9vayBhdCIsImRlZiI6ImVzYW1pbmFyZSJ9LHsidGVybSI6IndoZW4gaGlyaW5nIiwiZGVmIjoiaW4gZmFzZSBkaSBhc3N1bnppb25lIn0seyJ0ZXJtIjoiZGlzbWlzc2FscyIsImRlZiI6ImxpY2VuemlhbWVudGkifSx7InRlcm0iOiJnbyB0aHJvdWdoIiwiZGVmIjoiZXNhbWluYXJlLCBwYXNzYXJlIGluIHJhc3NlZ25hIn0seyJ0ZXJtIjoiY2hlY2tsaXN0IiwiZGVmIjoibGlzdGEgZGkgY29udHJvbGxvIn0seyJ0ZXJtIjoicmlnaHQgYXdheSIsImRlZiI6InN1Yml0bywgaW1tZWRpYXRhbWVudGUifV0=",
+      "vocab": [
+        {
+          "term": "main parts",
+          "def": "parti principali"
+        },
+        {
+          "term": "look at",
+          "def": "esaminare"
+        },
+        {
+          "term": "when hiring",
+          "def": "in fase di assunzione"
+        },
+        {
+          "term": "dismissals",
+          "def": "licenziamenti"
+        },
+        {
+          "term": "go through",
+          "def": "esaminare, passare in rassegna"
+        },
+        {
+          "term": "checklist",
+          "def": "lista di controllo"
+        },
+        {
+          "term": "right away",
+          "def": "subito, immediatamente"
+        }
+      ]
+    },
+    {
+      "sessionId": "2026-03-05T16:36:50.866Z",
+      "student": "PMhrL1",
+      "lessonNum": 1,
+      "audioPath": "/Users/nick/Documents/GitHub/lessongen/audio_output/PMhrL1_lesson1_complete.mp3",
+      "flashcardUrl": "https://nicc122.github.io/flashcards/flashcards.html?data=W3sidGVybSI6Im9mIGNvdXJzZSIsImRlZiI6ImNlcnRvIC8gbmF0dXJhbG1lbnRlIn0seyJ0ZXJtIjoiZW1wbG95ZWUgYmVuZWZpdHMiLCJkZWYiOiJiZW5lZml0IHBlciBpIGRpcGVuZGVudGkifSx7InRlcm0iOiJyZXF1aXJlIiwiZGVmIjoicmljaGllZGVyZSJ9LHsidGVybSI6InF1aWNrbHkiLCJkZWYiOiJ2ZWxvY2VtZW50ZSAvIHJhcGlkYW1lbnRlIn0seyJ0ZXJtIjoiZm9jdXNlcyBvbiIsImRlZiI6InNpIGNvbmNlbnRyYSBzdSJ9LHsidGVybSI6InRoaW5ncyBsaWtlIiwiZGVmIjoiY29zZSBjb21lIn0seyJ0ZXJtIjoibW9zdCBIUiBwbGF0Zm9ybXMiLCJkZWYiOiJsYSBtYWdnaW9yIHBhcnRlIGRlbGxlIHBpYXR0YWZvcm1lIEhSIn1d",
+      "vocab": [
+        {
+          "term": "of course",
+          "def": "certo / naturalmente"
+        },
+        {
+          "term": "employee benefits",
+          "def": "benefit per i dipendenti"
+        },
+        {
+          "term": "require",
+          "def": "richiedere"
+        },
+        {
+          "term": "quickly",
+          "def": "velocemente / rapidamente"
+        },
+        {
+          "term": "focuses on",
+          "def": "si concentra su"
+        },
+        {
+          "term": "things like",
+          "def": "cose come"
+        },
+        {
+          "term": "most HR platforms",
+          "def": "la maggior parte delle piattaforme HR"
+        }
+      ]
+    },
+    {
+      "sessionId": "2026-03-10T15:32:49.091Z",
+      "student": "CMOcycL2",
+      "lessonNum": 2,
+      "audioPath": "/Users/nick/Documents/GitHub/lessongen/audio_output/CMOcycL2_lesson2_complete.mp3",
+      "flashcardUrl": "https://nicc122.github.io/flashcards/flashcards.html?data=W3sidGVybSI6IvCfkanigI3wn6azIEhSIERpcmVjdG9yOiBHdXMiLCJkZWYiOiJ5b3VyIHJlc3VtZSBzaG93cyB0aHJlZSByb2xlcyBpbiBmb3VyIHllYXJzLiBBcmUgeW91IGNvbWZvcnRhYmxlIHdpdGggbG9uZy10ZXJtIGNvbW1pdG1lbnQ/In0seyJ0ZXJtIjoi8J+nlPCfj7vigI3imYLvuI8gR3VzOiBUaGF0J3MgYSAqKmZhaXIgcXVlc3Rpb24qKi4gQWx0aG91Z2ggSSd2ZSAqKm1vdmVkIGJldHdlZW4qKiBjb21wYW5pZXMiLCJkZWYiOiJJIHN0YXllZCBhdCBlYWNoIG9uZSB1bnRpbCBJIGNvbXBsZXRlZCB3aGF0IEkgd2FzIGhpcmVkIHRvIGRvLiJ9LHsidGVybSI6IvCfp5Twn4+74oCN4pmC77iPIEd1czogKipHcm93dGggb3Bwb3J0dW5pdGllcyoqIG1haW5seS4gSSB3YW50IHRvIGJ1aWxkIHNvbWV0aGluZyAqKmxhc3RpbmcqKiIsImRlZiI6Im5vdCBqdXN0IG1hbmFnZSBjYW1wYWlnbnMuIn0seyJ0ZXJtIjoi8J+nlPCfj7vigI3imYLvuI8gR3VzOiBEZXNwaXRlIG15ICoqY3VycmVudCoqIHJvbGUiLCJkZWYiOiJJIGhhdmUgYWN0dWFsbHkgYmVlbiBpbiB0aGUgaW5kdXN0cnkgZm9yIG1hbnkgeWVhcnMuIEknbSBub3cgcmVhZHkgZm9yIGEgcGVybWFuZW50ICoqc2VuaW9yIHBvc2l0aW9uKiouIn0seyJ0ZXJtIjoiVGhlIEhSIERpcmVjdG9yIGFza3MgR3VzIGFib3V0IGhpcyB3b3JrIGhpc3RvcnkgYW5kIHdoZXRoZXIgaGUncyBjb21mb3J0YWJsZSB3aXRoIGxvbmctdGVybSBjb21taXRtZW50LiBHdXMgc2F5cyB0aGF0J3MgYSBfX18oMSlfX18uIEFsdGhvdWdoIGhlJ3MgX19fKDIpX19fIGNvbXBhbmllcyIsImRlZiI6ImhlIGNvbXBsZXRlZCB3aGF0IGhlIHdhcyBoaXJlZCB0byBkbyBhdCBlYWNoIG9uZS4gSGUgd2FudHMgX19fKDMpX19fIG1haW5seSBhbmQgdG8gYnVpbGQgc29tZXRoaW5nIF9fXyg0KV9fXywgbm90IGp1c3QgbWFuYWdlIGNhbXBhaWducy4gRGVzcGl0ZSBoaXMgX19fKDUpX19fIHJvbGUsIGhlJ3MgYmVlbiBpbiB0aGUgaW5kdXN0cnkgZm9yIG1hbnkgeWVhcnMgYW5kIGlzIHJlYWR5IGZvciBhIHBlcm1hbmVudCBfX18oNilfX18uIEhlJ3Mgc3BlY2lmaWNhbGx5IGxvb2tpbmcgZm9yIHN0YWJpbGl0eSBfX18oNylfX18gaW4gaGlzIGNhcmVlci4ifSx7InRlcm0iOiJBbHRob3VnaCBJJ3ZlIG1vdmVkIGJldHdlZW4gY29tcGFuaWVzIiwiZGVmIjoiSSBzdGF5ZWQgYXQgZWFjaCBvbmUgdW50aWwgSSBjb21wbGV0ZWQgd2hhdCBJIHdhcyBoaXJlZCB0byBkby4ifSx7InRlcm0iOiJbXURlc3BpdGUgSSB3b3JrZWQgdGhlcmUgb25seSBvbmUgeWVhciIsImRlZiI6IkkgbGF1bmNoZWQgdGhyZWUgc3VjY2Vzc2Z1bCBjYW1wYWlnbnMuIn0seyJ0ZXJtIjoiW11BbHRob3VnaCBJIHdvcmtlZCB0aGVyZSBvbmx5IG9uZSB5ZWFyIiwiZGVmIjoiSSBsYXVuY2hlZCB0aHJlZSBzdWNjZXNzZnVsIGNhbXBhaWducy4ifSx7InRlcm0iOiJbXURlc3BpdGUgSSB3b3JrZWQgdGhlcmUgZm9yIG9ubHkgb25lIHllYXIiLCJkZWYiOiJidXQgSSBsYXVuY2hlZCB0aHJlZSBzdWNjZXNzZnVsIGNhbXBhaWducy4ifSx7InRlcm0iOiJBbHRob3VnaCBJIHdvcmtlZCB0aGVyZSBvbmx5IG9uZSB5ZWFyIiwiZGVmIjoiSSBsYXVuY2hlZCB0aHJlZSBzdWNjZXNzZnVsIGNhbXBhaWducy5dXSJ9LHsidGVybSI6IkFsdGhvdWdoIEkndmUgbW92ZWQgYmV0d2VlbiBjb21wYW5pZXMiLCJkZWYiOiJJIHN0YXllZCBsb25nIGVub3VnaCBhdCBlYWNoIG9uZS5dXSJ9LHsidGVybSI6Il9fXyBteSByb2xlIGlzIGludGVyaW0iLCJkZWYiOiJJJ20gY29tbWl0dGVkIHRvIGxvbmctdGVybSByZXN1bHRzLiJ9LHsidGVybSI6IkFsdGhvdWdoIG15IHJvbGUgaXMgaW50ZXJpbSIsImRlZiI6IkknbSBjb21taXR0ZWQgdG8gbG9uZy10ZXJtIHJlc3VsdHMuXV0ifSx7InRlcm0iOiJBbHRob3VnaCBteSBwb3NpdGlvbiBpcyB0ZW1wb3JhcnkiLCJkZWYiOiJJIHdhbnQgdG8gc3RheSBpbiB0aGlzIGluZHVzdHJ5IGxvbmctdGVybS4ifSx7InRlcm0iOiJEZXNwaXRlIGNoYW5naW5nIGNvbXBhbmllcyB0aHJlZSB0aW1lcyIsImRlZiI6IkkgY29tcGxldGVkIG15IG9iamVjdGl2ZXMgZWFjaCB0aW1lLiJ9LHsidGVybSI6IkFsdGhvdWdoIHRoZSByb2xlIGlzIGludGVyaW0iLCJkZWYiOiJJJ20gbG9va2luZyBmb3IgcGVybWFuZW50IG9wcG9ydHVuaXRpZXMgbm93Ll1dIn0seyJ0ZXJtIjoiZmFpciBxdWVzdGlvbiIsImRlZiI6InJlYXNvbmFibGUgcXVlc3Rpb24sIHZhbGlkIHF1ZXN0aW9uIn0seyJ0ZXJtIjoibW92ZWQgYmV0d2VlbiIsImRlZiI6ImNoYW5nZWQgZnJvbSBvbmUgdG8gYW5vdGhlciJ9LHsidGVybSI6Imdyb3d0aCBvcHBvcnR1bml0aWVzIiwiZGVmIjoiY2hhbmNlcyB0byBkZXZlbG9wIGFuZCBhZHZhbmNlIn0seyJ0ZXJtIjoibGFzdGluZyIsImRlZiI6InBlcm1hbmVudCwgbG9uZy10ZXJtIn0seyJ0ZXJtIjoiY3VycmVudCIsImRlZiI6InByZXNlbnQsIGV4aXN0aW5nIG5vdyJ9LHsidGVybSI6InNlbmlvciBwb3NpdGlvbiIsImRlZiI6ImhpZ2gtbGV2ZWwgcm9sZSwgZXhlY3V0aXZlIHJvbGUifSx7InRlcm0iOiJhdCB0aGlzIHN0YWdlIiwiZGVmIjoiYXQgdGhpcyBwb2ludCwgbm93IGluIG15IGNhcmVlciJ9XQ==",
+      "vocab": [
+        {
+          "term": "👩‍🦳 HR Director: Gus",
+          "def": "your resume shows three roles in four years. Are you comfortable with long-term commitment?"
+        },
+        {
+          "term": "🧔🏻‍♂️ Gus: That's a **fair question**. Although I've **moved between** companies",
+          "def": "I stayed at each one until I completed what I was hired to do."
+        },
+        {
+          "term": "🧔🏻‍♂️ Gus: **Growth opportunities** mainly. I want to build something **lasting**",
+          "def": "not just manage campaigns."
+        },
+        {
+          "term": "🧔🏻‍♂️ Gus: Despite my **current** role",
+          "def": "I have actually been in the industry for many years. I'm now ready for a permanent **senior position**."
+        },
+        {
+          "term": "The HR Director asks Gus about his work history and whether he's comfortable with long-term commitment. Gus says that's a ___(1)___. Although he's ___(2)___ companies",
+          "def": "he completed what he was hired to do at each one. He wants ___(3)___ mainly and to build something ___(4)___, not just manage campaigns. Despite his ___(5)___ role, he's been in the industry for many years and is ready for a permanent ___(6)___. He's specifically looking for stability ___(7)___ in his career."
+        },
+        {
+          "term": "Although I've moved between companies",
+          "def": "I stayed at each one until I completed what I was hired to do."
+        },
+        {
+          "term": "[]Despite I worked there only one year",
+          "def": "I launched three successful campaigns."
+        },
+        {
+          "term": "[]Although I worked there only one year",
+          "def": "I launched three successful campaigns."
+        },
+        {
+          "term": "[]Despite I worked there for only one year",
+          "def": "but I launched three successful campaigns."
+        },
+        {
+          "term": "Although I worked there only one year",
+          "def": "I launched three successful campaigns.]]"
+        },
+        {
+          "term": "Although I've moved between companies",
+          "def": "I stayed long enough at each one.]]"
+        },
+        {
+          "term": "___ my role is interim",
+          "def": "I'm committed to long-term results."
+        },
+        {
+          "term": "Although my role is interim",
+          "def": "I'm committed to long-term results.]]"
+        },
+        {
+          "term": "Although my position is temporary",
+          "def": "I want to stay in this industry long-term."
+        },
+        {
+          "term": "Despite changing companies three times",
+          "def": "I completed my objectives each time."
+        },
+        {
+          "term": "Although the role is interim",
+          "def": "I'm looking for permanent opportunities now.]]"
+        },
+        {
+          "term": "fair question",
+          "def": "reasonable question, valid question"
+        },
+        {
+          "term": "moved between",
+          "def": "changed from one to another"
+        },
+        {
+          "term": "growth opportunities",
+          "def": "chances to develop and advance"
+        },
+        {
+          "term": "lasting",
+          "def": "permanent, long-term"
+        },
+        {
+          "term": "current",
+          "def": "present, existing now"
+        },
+        {
+          "term": "senior position",
+          "def": "high-level role, executive role"
+        },
+        {
+          "term": "at this stage",
+          "def": "at this point, now in my career"
+        }
+      ]
+    },
+    {
+      "sessionId": "2026-03-10T17:35:28.060Z",
+      "student": "PEL1",
+      "lessonNum": 14,
+      "audioPath": "/Users/nick/Documents/GitHub/lessongen/audio_output/PEL1_lesson14_complete.mp3",
+      "flashcardUrl": "https://nicc122.github.io/flashcards/flashcards.html?data=W3sidGVybSI6IndpbGwgcHJlc2VudCIsImRlZiI6InByZXNlbnRlcsOyIn0seyJ0ZXJtIjoiZHVyYWJsZSIsImRlZiI6ImR1cmV2b2xpIn0seyJ0ZXJtIjoibG9uZ2VyIHBlcmlvZHMiLCJkZWYiOiJwZXJpb2RpIHBpw7kgbHVuZ2hpIn0seyJ0ZXJtIjoiZmFzdGVyIiwiZGVmIjoicGnDuSB2ZWxvY2UifSx7InRlcm0iOiIlIGltcHJvdmVtZW50IiwiZGVmIjoibWlnbGlvcmFtZW50byBkZWwgMTUlIn0seyJ0ZXJtIjoicmVxdWlyZXMiLCJkZWYiOiJyaWNoaWVkZSJ9LHsidGVybSI6ImJlZ2luIGltcGxlbWVudGF0aW9uIiwiZGVmIjoiaW5pemlhcmUgbCdpbXBsZW1lbnRhemlvbmUifV0=",
+      "vocab": [
+        {
+          "term": "will present",
+          "def": "presenterò"
+        },
+        {
+          "term": "durable",
+          "def": "durevoli"
+        },
+        {
+          "term": "longer periods",
+          "def": "periodi più lunghi"
+        },
+        {
+          "term": "faster",
+          "def": "più veloce"
+        },
+        {
+          "term": "% improvement",
+          "def": "miglioramento del 15%"
+        },
+        {
+          "term": "requires",
+          "def": "richiede"
+        },
+        {
+          "term": "begin implementation",
+          "def": "iniziare l'implementazione"
+        }
+      ]
+    },
+    {
+      "sessionId": "2026-03-11T12:00:35.790Z",
+      "student": "MMeventsL1",
+      "lessonNum": 1,
+      "audioPath": "/Users/nick/Documents/GitHub/lessongen/audio_output/MMeventsL1_lesson1_complete.mp3",
+      "flashcardUrl": "https://nicc122.github.io/flashcards/flashcards.html?data=W3sidGVybSI6IndoYXQga2luZCBvZiIsImRlZiI6ImNoZSB0aXBvIGRpIn0seyJ0ZXJtIjoiSSBzZWUiLCJkZWYiOiJjYXBpc2NvIC8gaG8gY2FwaXRvIn0seyJ0ZXJtIjoibGlrZSB5b3VycyIsImRlZiI6ImNvbWUgbGEgdHVhIC8gY29tZSBpbCB0dW8ifSx7InRlcm0iOiJydW4iLCJkZWYiOiJvcmdhbml6emFyZSAvIGdlc3RpcmUifSx7InRlcm0iOiJyZWFjaCIsImRlZiI6InJhZ2dpdW5nZXJlIn0seyJ0ZXJtIjoiSSdkIGxpa2UgdG8iLCJkZWYiOiJtaSBwaWFjZXJlYmJlIC8gdm9ycmVpIn1d",
+      "vocab": [
+        {
+          "term": "what kind of",
+          "def": "che tipo di"
+        },
+        {
+          "term": "I see",
+          "def": "capisco / ho capito"
+        },
+        {
+          "term": "like yours",
+          "def": "come la tua / come il tuo"
+        },
+        {
+          "term": "run",
+          "def": "organizzare / gestire"
+        },
+        {
+          "term": "reach",
+          "def": "raggiungere"
+        },
+        {
+          "term": "I'd like to",
+          "def": "mi piacerebbe / vorrei"
+        }
+      ]
+    },
+    {
+      "sessionId": "2026-03-11T16:03:57.391Z",
+      "student": "PMwineL1",
+      "lessonNum": 5,
+      "audioPath": "/Users/nick/Documents/GitHub/lessongen/audio_output/PMwineL1_lesson5_complete.mp3",
+      "flashcardUrl": "https://nicc122.github.io/flashcards/flashcards.html?data=W3sidGVybSI6IvCfkanwn4+7IFZhbGVudGluYTogSSB1bmRlcnN0YW5kIENhcmxvcy4gQnV0IGlmIHdlIGd1YXJhbnRlZSAxMDAwIHVuaXRzIHBlciBxdWFydGVyIiwiZGVmIjoieW91IHdpbGwgaGF2ZSAqKnByZWRpY3RhYmxlIG9yZGVycyoqIGZvciB0aGUgKip3aG9sZSB5ZWFyKiouIn0seyJ0ZXJtIjoi8J+RqfCfj7sgVmFsZW50aW5hOiBZZXMuIE91ciBwcm9kdWN0aW9uIGlzICoqZXhwYW5kaW5nKiouIElmIHlvdSBvZmZlciBiZXR0ZXIgcHJpY2luZyIsImRlZiI6IndlIHdpbGwgKippbmNyZWFzZSoqIG91ciBvcmRlcnMgc2lnbmlmaWNhbnRseS4ifSx7InRlcm0iOiLwn5Go8J+Pu+KAjfCfprAgQ2FybG9zOiBJJ2xsIGNvbmZpcm0gYnkgV2VkbmVzZGF5LiBJZiB3ZSBhZ3JlZSIsImRlZiI6IndlIGNhbiBzdGFydCB0aGUgbmV3IGNvbnRyYWN0IGluIEFwcmlsLiJ9LHsidGVybSI6InByZWRpY3RhYmxlIG9yZGVycyIsImRlZiI6Im9yZGluaSBwcmV2ZWRpYmlsaSJ9LHsidGVybSI6Indob2xlIHllYXIiLCJkZWYiOiJhbm5vIGludGVybyJ9LHsidGVybSI6ImV4cGFuZGluZyIsImRlZiI6ImluIGVzcGFuc2lvbmUifSx7InRlcm0iOiJpbmNyZWFzZSIsImRlZiI6ImF1bWVudGFyZSJ9LHsidGVybSI6ImFuIGFuc3dlciIsImRlZiI6InVuYSByaXNwb3N0YSJ9LHsidGVybSI6IkkgbG9vayBmb3J3YXJkIHRvIiwiZGVmIjoibm9uIHZlZG8gbCdvcmEgZGldXSJ9LHsidGVybSI6IkNhcmxvcyBzYXlzIGEgMTAlIHByaWNlIHJlZHVjdGlvbiBpcyBkaWZmaWN1bHQuIFZhbGVudGluYSBleHBsYWlucyB0aGF0IGlmIHRoZXkgZ3VhcmFudGVlIDEwMDAgdW5pdHMgcGVyIHF1YXJ0ZXIiLCJkZWYiOiJDYXJsb3Mgd2lsbCBoYXZlIF9fX18oMSkgZm9yIHRoZSBfX19fKDIpLiBDYXJsb3MgYXNrcyBpZiBWYWxlbnRpbmEgY2FuIHJlYWxseSBjb21taXQgdG8gdGhpcyBoaWdoZXIgdm9sdW1lLiBWYWxlbnRpbmEgY29uZmlybXMgdGhlaXIgcHJvZHVjdGlvbiBpcyBfX19fKDMpLiBJZiBDYXJsb3Mgb2ZmZXJzIGJldHRlciBwcmljaW5nLCB0aGV5IHdpbGwgX19fXyg0KSB0aGVpciBvcmRlcnMgc2lnbmlmaWNhbnRseS4gQ2FybG9zIG5lZWRzIHRvIGRpc2N1c3Mgd2l0aCBoaXMgc2FsZXMgdGVhbS4gVmFsZW50aW5hIGFza3Mgd2hlbiBzaGUgY2FuIGdldCBfX19fKDUpLiBDYXJsb3Mgd2lsbCBjb25maXJtIGJ5IFdlZG5lc2RheS4gVmFsZW50aW5hIHNheXMgc2hlIF9fX18oNikgaGlzIHJlc3BvbnNlLiJ9LHsidGVybSI6IklmIHdlIGd1YXJhbnRlZSAxMDAwIHVuaXRzIHBlciBxdWFydGVyIiwiZGVmIjoieW91IHdpbGwgaGF2ZSBwcmVkaWN0YWJsZSBvcmRlcnMgZm9yIHRoZSB3aG9sZSB5ZWFyLiJ9LHsidGVybSI6IltdSWYgd2UgY29tbWl0IHRvIGxhcmdlciB2b2x1bWVzIiwiZGVmIjoieW91IGhhdmUgc3RhYmxlIHJldmVudWUuIn0seyJ0ZXJtIjoiW11JZiB3ZSBjb21taXQgdG8gbGFyZ2VyIHZvbHVtZXMiLCJkZWYiOiJ5b3Ugd2lsbCBoYXZlIHN0YWJsZSByZXZlbnVlLiJ9LHsidGVybSI6IltdSWYgd2Ugd2lsbCBjb21taXQgdG8gbGFyZ2VyIHZvbHVtZXMiLCJkZWYiOiJ5b3Ugd2lsbCBoYXZlIHN0YWJsZSByZXZlbnVlLiJ9LHsidGVybSI6IklmIHdlIGNvbW1pdCB0byBsYXJnZXIgdm9sdW1lcyIsImRlZiI6InlvdSB3aWxsIGhhdmUgc3RhYmxlIHJldmVudWUuXV0ifSx7InRlcm0iOiJJZiB5b3Ugb2ZmZXIgYmV0dGVyIHByaWNpbmciLCJkZWYiOiJ3ZSB3aWxsIGluY3JlYXNlIG91ciBvcmRlcnMuXV0ifSx7InRlcm0iOiJJZiB3ZSBndWFyYW50ZWUgaGlnaGVyIHZvbHVtZXMiLCJkZWYiOiJ5b3UgX19fXyBtb3JlIHByZWRpY3RhYmxlIHJldmVudWUuIn0seyJ0ZXJtIjoiSWYgd2UgZ3VhcmFudGVlIGhpZ2hlciB2b2x1bWVzIiwiZGVmIjoieW91IHdpbGwgaGF2ZSBtb3JlIHByZWRpY3RhYmxlIHJldmVudWUuXV0ifSx7InRlcm0iOiJJZiB3ZSBzaWduIGEgbG9uZy10ZXJtIGNvbnRyYWN0IiwiZGVmIjoieW91IHdpbGwgZ2V0IHN0YWJsZSBidXNpbmVzcy4ifSx7InRlcm0iOiJJZiB5b3UgcmVkdWNlIHByaWNlcyBieSAxMCUiLCJkZWYiOiJ3ZSB3aWxsIGluY3JlYXNlIG9yZGVycyBieSA0MCUuIn0seyJ0ZXJtIjoiSWYgd2UgY29tbWl0IHRvIG1vbnRobHkgb3JkZXJzIiwiZGVmIjoieW91IHdpbGwgaW1wcm92ZSB5b3VyIHBsYW5uaW5nLl1dIn0seyJ0ZXJtIjoiSWYuLi4iLCJkZWYiOiIuLi53aWxsLi4uXV0ifSx7InRlcm0iOiJwcmVkaWN0YWJsZSBvcmRlcnMiLCJkZWYiOiJvcmRpbmkgcHJldmVkaWJpbGkifSx7InRlcm0iOiJ3aG9sZSB5ZWFyIiwiZGVmIjoiYW5ubyBpbnRlcm8ifSx7InRlcm0iOiJleHBhbmRpbmciLCJkZWYiOiJpbiBlc3BhbnNpb25lIn0seyJ0ZXJtIjoiaW5jcmVhc2UiLCJkZWYiOiJhdW1lbnRhcmUifSx7InRlcm0iOiJhbiBhbnN3ZXIiLCJkZWYiOiJ1bmEgcmlzcG9zdGEifSx7InRlcm0iOiJJIGxvb2sgZm9yd2FyZCB0byIsImRlZiI6Im5vbiB2ZWRvIGwnb3JhIGRpIn1d",
+      "vocab": [
+        {
+          "term": "👩🏻 Valentina: I understand Carlos. But if we guarantee 1000 units per quarter",
+          "def": "you will have **predictable orders** for the **whole year**."
+        },
+        {
+          "term": "👩🏻 Valentina: Yes. Our production is **expanding**. If you offer better pricing",
+          "def": "we will **increase** our orders significantly."
+        },
+        {
+          "term": "👨🏻‍🦰 Carlos: I'll confirm by Wednesday. If we agree",
+          "def": "we can start the new contract in April."
+        },
+        {
+          "term": "predictable orders",
+          "def": "ordini prevedibili"
+        },
+        {
+          "term": "whole year",
+          "def": "anno intero"
+        },
+        {
+          "term": "expanding",
+          "def": "in espansione"
+        },
+        {
+          "term": "increase",
+          "def": "aumentare"
+        },
+        {
+          "term": "an answer",
+          "def": "una risposta"
+        },
+        {
+          "term": "I look forward to",
+          "def": "non vedo l'ora di]]"
+        },
+        {
+          "term": "Carlos says a 10% price reduction is difficult. Valentina explains that if they guarantee 1000 units per quarter",
+          "def": "Carlos will have ____(1) for the ____(2). Carlos asks if Valentina can really commit to this higher volume. Valentina confirms their production is ____(3). If Carlos offers better pricing, they will ____(4) their orders significantly. Carlos needs to discuss with his sales team. Valentina asks when she can get ____(5). Carlos will confirm by Wednesday. Valentina says she ____(6) his response."
+        },
+        {
+          "term": "If we guarantee 1000 units per quarter",
+          "def": "you will have predictable orders for the whole year."
+        },
+        {
+          "term": "[]If we commit to larger volumes",
+          "def": "you have stable revenue."
+        },
+        {
+          "term": "[]If we commit to larger volumes",
+          "def": "you will have stable revenue."
+        },
+        {
+          "term": "[]If we will commit to larger volumes",
+          "def": "you will have stable revenue."
+        },
+        {
+          "term": "If we commit to larger volumes",
+          "def": "you will have stable revenue.]]"
+        },
+        {
+          "term": "If you offer better pricing",
+          "def": "we will increase our orders.]]"
+        },
+        {
+          "term": "If we guarantee higher volumes",
+          "def": "you ____ more predictable revenue."
+        },
+        {
+          "term": "If we guarantee higher volumes",
+          "def": "you will have more predictable revenue.]]"
+        },
+        {
+          "term": "If we sign a long-term contract",
+          "def": "you will get stable business."
+        },
+        {
+          "term": "If you reduce prices by 10%",
+          "def": "we will increase orders by 40%."
+        },
+        {
+          "term": "If we commit to monthly orders",
+          "def": "you will improve your planning.]]"
+        },
+        {
+          "term": "If...",
+          "def": "...will...]]"
+        },
+        {
+          "term": "predictable orders",
+          "def": "ordini prevedibili"
+        },
+        {
+          "term": "whole year",
+          "def": "anno intero"
+        },
+        {
+          "term": "expanding",
+          "def": "in espansione"
+        },
+        {
+          "term": "increase",
+          "def": "aumentare"
+        },
+        {
+          "term": "an answer",
+          "def": "una risposta"
+        },
+        {
+          "term": "I look forward to",
+          "def": "non vedo l'ora di"
+        }
+      ]
+    },
+    {
+      "sessionId": "2026-03-24T11:00:09.120Z",
+      "student": "MMeventsL1",
+      "lessonNum": 2,
+      "audioPath": "/Users/nick/Documents/GitHub/lessongen/audio_output/MMeventsL1_lesson2_complete.mp3",
+      "flashcardUrl": "https://nicc122.github.io/flashcards/flashcards.html?data=W3sidGVybSI6Im9ubGluZSBldmVudHMiLCJkZWYiOiJldmVudGkgb25saW5lIn0seyJ0ZXJtIjoiZm9jdXMgb24iLCJkZWYiOiJjb25jZW50cmFyc2kgc3UifSx7InRlcm0iOiJkZWNpc2lvbi1tYWtlcnMiLCJkZWYiOiJkZWNpc29yaSAvIHJlc3BvbnNhYmlsaSBkZWxsZSBkZWNpc2lvbmkifSx7InRlcm0iOiJsYXJnZSBlbnRlcnByaXNlcyIsImRlZiI6ImdyYW5kaSBhemllbmRlIn0seyJ0ZXJtIjoiZ2V0IHZpc2liaWxpdHkiLCJkZWYiOiJvdHRlbmVyZSB2aXNpYmlsaXTDoCJ9LHsidGVybSI6IkknZCBsaWtlIHRvIiwiZGVmIjoibWkgcGlhY2VyZWJiZSAvIHZvcnJlaSJ9XQ==",
+      "vocab": [
+        {
+          "term": "online events",
+          "def": "eventi online"
+        },
+        {
+          "term": "focus on",
+          "def": "concentrarsi su"
+        },
+        {
+          "term": "decision-makers",
+          "def": "decisori / responsabili delle decisioni"
+        },
+        {
+          "term": "large enterprises",
+          "def": "grandi aziende"
+        },
+        {
+          "term": "get visibility",
+          "def": "ottenere visibilità"
+        },
+        {
+          "term": "I'd like to",
+          "def": "mi piacerebbe / vorrei"
+        }
+      ]
+    },
+    {
+      "sessionId": "2026-03-25T18:02:20.261Z",
+      "student": "CMOcycL2",
+      "lessonNum": 4,
+      "audioPath": "/Users/nick/Documents/GitHub/lessongen/audio_output/CMOcycL2_lesson4_complete.mp3",
+      "flashcardUrl": "https://nicc122.github.io/flashcards/flashcards.html?data=W3sidGVybSI6IvCfkanigI3wn6awIENFTzogR3VzIiwiZGVmIjoid2FsayB1cyB0aHJvdWdoIHRoZSBHZXJtYW55IHN0cmF0ZWd5LiJ9LHsidGVybSI6IvCfp5Twn4+74oCN4pmC77iPIEd1czogRmlyc3QiLCJkZWYiOiJ3ZSdsbCAqKnRhcmdldCoqIHByZW1pdW0gZGVhbGVycyBpbiBNdW5pY2ggYW5kIEhhbWJ1cmcgZHVyaW5nIFEyLiJ9LHsidGVybSI6IvCfp5Twn4+74oCN4pmC77iPIEd1czogVGhlbiIsImRlZiI6IndlJ2xsICoqZXhwYW5kKiogdG8gRnJhbmtmdXJ0IGFuZCBCZXJsaW4gaW4gUTMuIFdlJ3JlIHByb2plY3Rpbmcgcm91Z2hseSAyNSBkZWFsZXJzICoqYnkgeWVhci1lbmQqKi4ifSx7InRlcm0iOiLwn6eU8J+Pu+KAjeKZgu+4jyBHdXM6IEFmdGVyIHRoYXQiLCJkZWYiOiJ3ZSdsbCBpbnRyb2R1Y2Ugb3VyIGUtYmlrZSByYW5nZSB0byBjYXB0dXJlIHRoZSAqKmNvbW11dGVyIHNlZ21lbnQqKi4ifSx7InRlcm0iOiLwn6eU8J+Pu+KAjeKZgu+4jyBHdXM6IEZpbmFsbHkiLCJkZWYiOiJ3ZSdsbCBhc3Nlc3Mgc21hbGxlciBjaXRpZXMgaW4geWVhciB0d28gKipiYXNlZCBvbioqIHBlcmZvcm1hbmNlLiJ9LHsidGVybSI6Ikd1cyBwcmVzZW50cyBCZXJyaWEncyBHZXJtYW4gbWFya2V0IGVudHJ5IHN0cmF0ZWd5IHRvIHRoZSBDRU8uIFRoZSBtYXJrZXQgZW50cnkgZm9sbG93cyBhIF9fXygxKV9fXyBhcHByb2FjaC4gRmlyc3QiLCJkZWYiOiJ0aGV5J2xsIF9fXygyKV9fXyBwcmVtaXVtIGRlYWxlcnMgaW4gTXVuaWNoIGFuZCBIYW1idXJnIGR1cmluZyBRMi4gVGhlbiwgdGhleSdsbCBfX18oMylfX18gdG8gRnJhbmtmdXJ0IGFuZCBCZXJsaW4gaW4gUTMsIHByb2plY3Rpbmcgcm91Z2hseSAyNSBkZWFsZXJzIF9fXyg0KV9fXy4gQWZ0ZXIgdGhhdCwgdGhleSdsbCBpbnRyb2R1Y2UgdGhlaXIgZS1iaWtlIHJhbmdlIHRvIGNhcHR1cmUgdGhlIF9fXyg1KV9fXy4gRmluYWxseSwgdGhleSdsbCBhc3Nlc3Mgc21hbGxlciBjaXRpZXMgaW4geWVhciB0d28gX19fKDYpX19fIHBlcmZvcm1hbmNlLiBHdXMgaGFzIF9fXyg3KV9fXyBmbGV4aWJpbGl0eSBfX18oOClfX18gdGhlIHRpbWVsaW5lIHRvIGFkanVzdCB0aGVpciBhcHByb2FjaCBpZiBjb21wZXRpdG9ycyByZXNwb25kIGFnZ3Jlc3NpdmVseS4ifSx7InRlcm0iOiJGaXJzdCIsImRlZiI6IndlJ2xsIHRhcmdldCBwcmVtaXVtIGRlYWxlcnMgaW4gTXVuaWNoIGFuZCBIYW1idXJnIGR1cmluZyBRMi4ifSx7InRlcm0iOiJbXUZpcnN0IiwiZGVmIjoid2UnbGwgbGF1bmNoIHNvY2lhbCBtZWRpYSBhZHMuIFRoZW4sIHdlJ2xsIGNvbnRhY3QgaW5mbHVlbmNlcnMuIEFmdGVyIHRoYXQsIHdlJ2xsIHJ1biB0aGUgVFYgY2FtcGFpZ24uIEZpbmFsbHksIHdlJ2xsIG1lYXN1cmUgcmVzdWx0cy4ifSx7InRlcm0iOiJbXUZpcnN0IHdlIGxhdW5jaCBzb2NpYWwgbWVkaWEgYWRzIiwiZGVmIjoidGhlbiBjb250YWN0IGluZmx1ZW5jZXJzLCBhZnRlciB0aGF0IHJ1biBUViBjYW1wYWlnbiwgZmluYWxseSBtZWFzdXJlIHJlc3VsdHMuIn0seyJ0ZXJtIjoiRmlyc3QiLCJkZWYiOiJ3ZSdsbCBsYXVuY2ggc29jaWFsIG1lZGlhIGFkcy4gVGhlbiwgd2UnbGwgY29udGFjdCBpbmZsdWVuY2Vycy4gQWZ0ZXIgdGhhdCwgd2UnbGwgcnVuIHRoZSBUViBjYW1wYWlnbi4gRmluYWxseSwgd2UnbGwgbWVhc3VyZSByZXN1bHRzLl1dIn0seyJ0ZXJtIjoiRmlyc3QiLCJkZWYiOiJ3ZSdsbCBwaWxvdCB0ZXN0IHRoZSBwcm9ncmFtLiBUaGVuLCB3ZSdsbCBleHBhbmQuXV0ifSx7InRlcm0iOiJfX18iLCJkZWYiOiJ3ZSdsbCByZXNlYXJjaCB0aGUgbWFya2V0LiBfX18sIHdlJ2xsIGNvbnRhY3QgZGlzdHJpYnV0b3JzLiBfX18gX19fLCB3ZSdsbCBuZWdvdGlhdGUgdGVybXMuIn0seyJ0ZXJtIjoiRmlyc3QiLCJkZWYiOiJ3ZSdsbCByZXNlYXJjaCB0aGUgbWFya2V0LiBUaGVuLCB3ZSdsbCBjb250YWN0IGRpc3RyaWJ1dG9ycy4gQWZ0ZXIgdGhhdCwgd2UnbGwgbmVnb3RpYXRlIHRlcm1zLl1dIn0seyJ0ZXJtIjoiRmlyc3QiLCJkZWYiOiJ3ZSdsbCBsYXVuY2ggaW4gRnJhbmNlLiBUaGVuLCB3ZSdsbCBlbnRlciBTcGFpbi4gQWZ0ZXIgdGhhdCwgd2UnbGwgYXNzZXNzIHRoZSByZXN1bHRzLiBGaW5hbGx5LCB3ZSdsbCBleHBhbmQgdG8gSXRhbHkuIn0seyJ0ZXJtIjoiRmlyc3QiLCJkZWYiOiJ3ZSdsbCBoaXJlIGEgdGVhbS4gVGhlbiwgd2UnbGwgdHJhaW4gdGhlbS4gQWZ0ZXIgdGhhdCwgd2UnbGwgYXNzaWduIHRlcnJpdG9yaWVzLiBGaW5hbGx5LCB3ZSdsbCBzdGFydCBzZWxsaW5nLiJ9LHsidGVybSI6IkZpcnN0IiwiZGVmIjoid2UnbGwgZGVzaWduIHRoZSBwcm9kdWN0LiBUaGVuLCB3ZSdsbCB0ZXN0IGl0LiBBZnRlciB0aGF0LCB3ZSdsbCBnZXQgZmVlZGJhY2suIEZpbmFsbHksIHdlJ2xsIGxhdW5jaCBpdC5dXSJ9LHsidGVybSI6IlNlcXVlbmNlIHdvcmRzIChmaXJzdCIsImRlZiI6InRoZW4sIGFmdGVyIHRoYXQsIGZpbmFsbHkpIGZvciBwcmVzZW50YXRpb25zXV0ifSx7InRlcm0iOiJwaGFzZWQiLCJkZWYiOiJzdGVwLWJ5LXN0ZXAsIGluIHN0YWdlcyJ9LHsidGVybSI6InRhcmdldCIsImRlZiI6ImZvY3VzIG9uLCBhaW0gZm9yIn0seyJ0ZXJtIjoiZXhwYW5kIiwiZGVmIjoiZ3JvdywgZXh0ZW5kIn0seyJ0ZXJtIjoiYnkgeWVhci1lbmQiLCJkZWYiOiJiZWZvcmUgdGhlIGVuZCBvZiB0aGUgeWVhciJ9LHsidGVybSI6ImNvbW11dGVyIHNlZ21lbnQiLCJkZWYiOiJwZW9wbGUgd2hvIGJpa2UgdG8gd29yayJ9LHsidGVybSI6ImJhc2VkIG9uIiwiZGVmIjoiZGVwZW5kaW5nIG9uLCBhY2NvcmRpbmcgdG8ifSx7InRlcm0iOiJidWlsdCBpbnRvIiwiZGVmIjoiaW5jbHVkZWQgaW4sIGluY29ycG9yYXRlZCBpbiJ9XQ==",
+      "vocab": [
+        {
+          "term": "👩‍🦰 CEO: Gus",
+          "def": "walk us through the Germany strategy."
+        },
+        {
+          "term": "🧔🏻‍♂️ Gus: First",
+          "def": "we'll **target** premium dealers in Munich and Hamburg during Q2."
+        },
+        {
+          "term": "🧔🏻‍♂️ Gus: Then",
+          "def": "we'll **expand** to Frankfurt and Berlin in Q3. We're projecting roughly 25 dealers **by year-end**."
+        },
+        {
+          "term": "🧔🏻‍♂️ Gus: After that",
+          "def": "we'll introduce our e-bike range to capture the **commuter segment**."
+        },
+        {
+          "term": "🧔🏻‍♂️ Gus: Finally",
+          "def": "we'll assess smaller cities in year two **based on** performance."
+        },
+        {
+          "term": "Gus presents Berria's German market entry strategy to the CEO. The market entry follows a ___(1)___ approach. First",
+          "def": "they'll ___(2)___ premium dealers in Munich and Hamburg during Q2. Then, they'll ___(3)___ to Frankfurt and Berlin in Q3, projecting roughly 25 dealers ___(4)___. After that, they'll introduce their e-bike range to capture the ___(5)___. Finally, they'll assess smaller cities in year two ___(6)___ performance. Gus has ___(7)___ flexibility ___(8)___ the timeline to adjust their approach if competitors respond aggressively."
+        },
+        {
+          "term": "First",
+          "def": "we'll target premium dealers in Munich and Hamburg during Q2."
+        },
+        {
+          "term": "[]First",
+          "def": "we'll launch social media ads. Then, we'll contact influencers. After that, we'll run the TV campaign. Finally, we'll measure results."
+        },
+        {
+          "term": "[]First we launch social media ads",
+          "def": "then contact influencers, after that run TV campaign, finally measure results."
+        },
+        {
+          "term": "First",
+          "def": "we'll launch social media ads. Then, we'll contact influencers. After that, we'll run the TV campaign. Finally, we'll measure results.]]"
+        },
+        {
+          "term": "First",
+          "def": "we'll pilot test the program. Then, we'll expand.]]"
+        },
+        {
+          "term": "___",
+          "def": "we'll research the market. ___, we'll contact distributors. ___ ___, we'll negotiate terms."
+        },
+        {
+          "term": "First",
+          "def": "we'll research the market. Then, we'll contact distributors. After that, we'll negotiate terms.]]"
+        },
+        {
+          "term": "First",
+          "def": "we'll launch in France. Then, we'll enter Spain. After that, we'll assess the results. Finally, we'll expand to Italy."
+        },
+        {
+          "term": "First",
+          "def": "we'll hire a team. Then, we'll train them. After that, we'll assign territories. Finally, we'll start selling."
+        },
+        {
+          "term": "First",
+          "def": "we'll design the product. Then, we'll test it. After that, we'll get feedback. Finally, we'll launch it.]]"
+        },
+        {
+          "term": "Sequence words (first",
+          "def": "then, after that, finally) for presentations]]"
+        },
+        {
+          "term": "phased",
+          "def": "step-by-step, in stages"
+        },
+        {
+          "term": "target",
+          "def": "focus on, aim for"
+        },
+        {
+          "term": "expand",
+          "def": "grow, extend"
+        },
+        {
+          "term": "by year-end",
+          "def": "before the end of the year"
+        },
+        {
+          "term": "commuter segment",
+          "def": "people who bike to work"
+        },
+        {
+          "term": "based on",
+          "def": "depending on, according to"
+        },
+        {
+          "term": "built into",
+          "def": "included in, incorporated in"
+        }
+      ]
+    },
+    {
+      "sessionId": "2026-03-26T11:42:10.248Z",
+      "student": "COOvetL2",
+      "lessonNum": 11,
+      "audioPath": "/Users/nick/Documents/GitHub/lessongen/audio_output/COOvetL2_lesson11_complete.mp3",
+      "flashcardUrl": "https://nicc122.github.io/flashcards/flashcards.html?data=W3sidGVybSI6InN0ZWFkeSIsImRlZiI6ImNvc3RhbnRlIn0seyJ0ZXJtIjoiZGVzcGl0ZSIsImRlZiI6Im5vbm9zdGFudGUifSx7InRlcm0iOiJjbG9zZWx5IiwiZGVmIjoic3RyZXR0YW1lbnRlIn0seyJ0ZXJtIjoiY29tcGF0aWJpbGl0eSIsImRlZiI6ImNvbXBhdGliaWxpdMOgIn0seyJ0ZXJtIjoicmVhc3N1cmUiLCJkZWYiOiJyYXNzaWN1cmFyZSJ9LHsidGVybSI6ImNvbnN0cmFpbnRzIiwiZGVmIjoidmluY29saSJ9LHsidGVybSI6ImluIHRoZSBsb25nIHJ1biIsImRlZiI6ImEgbHVuZ28gdGVybWluZSJ9XQ==",
+      "vocab": [
+        {
+          "term": "steady",
+          "def": "costante"
+        },
+        {
+          "term": "despite",
+          "def": "nonostante"
+        },
+        {
+          "term": "closely",
+          "def": "strettamente"
+        },
+        {
+          "term": "compatibility",
+          "def": "compatibilità"
+        },
+        {
+          "term": "reassure",
+          "def": "rassicurare"
+        },
+        {
+          "term": "constraints",
+          "def": "vincoli"
+        },
+        {
+          "term": "in the long run",
+          "def": "a lungo termine"
+        }
+      ]
+    },
+    {
+      "sessionId": "2026-03-26T12:29:36.588Z",
+      "student": "PMhrL1",
+      "lessonNum": 4,
+      "audioPath": "/Users/nick/Documents/GitHub/lessongen/audio_output/PMhrL1_lesson4_complete.mp3",
+      "flashcardUrl": "https://nicc122.github.io/flashcards/flashcards.html?data=W3sidGVybSI6ImdvIHRocm91Z2giLCJkZWYiOiJlc2FtaW5hcmUgLyBwYXNzYXJlIGluIHJhc3NlZ25hIn0seyJ0ZXJtIjoiaXMgcmVxdWlyZWQiLCJkZWYiOiLDqCBvYmJsaWdhdG9yaW8gLyDDqCByaWNoaWVzdG8ifSx7InRlcm0iOiJhcmUgb3B0aW9uYWwiLCJkZWYiOiJzb25vIG9wemlvbmFsaSAvIGZhY29sdGF0aXZpIn0seyJ0ZXJtIjoidG9vIiwiZGVmIjoiYW5jaGUifSx7InRlcm0iOiJob3cgaXQgd29ya3MiLCJkZWYiOiJjb21lIGZ1bnppb25hIn0seyJ0ZXJtIjoib2YgY291cnNlIiwiZGVmIjoiY2VydG8gLyBuYXR1cmFsbWVudGUifV0=",
+      "vocab": [
+        {
+          "term": "go through",
+          "def": "esaminare / passare in rassegna"
+        },
+        {
+          "term": "is required",
+          "def": "è obbligatorio / è richiesto"
+        },
+        {
+          "term": "are optional",
+          "def": "sono opzionali / facoltativi"
+        },
+        {
+          "term": "too",
+          "def": "anche"
+        },
+        {
+          "term": "how it works",
+          "def": "come funziona"
+        },
+        {
+          "term": "of course",
+          "def": "certo / naturalmente"
+        }
+      ]
+    },
+    {
+      "sessionId": "2026-03-26T12:43:32.724Z",
+      "student": "CONbusnssL1",
+      "lessonNum": null,
+      "audioPath": null,
+      "flashcardUrl": null,
+      "vocab": []
+    }
+  ]
+}
