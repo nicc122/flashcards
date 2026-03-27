@@ -548,103 +548,11 @@
       "student": "CMOcycL2",
       "lessonNum": 4,
       "audioPath": "/Users/nick/Documents/GitHub/lessongen/audio_output/CMOcycL2_lesson4_complete.mp3",
-      "flashcardUrl": "https://nicc122.github.io/flashcards/flashcards.html?data=W3sidGVybSI6IvCfkanigI3wn6awIENFTzogR3VzIiwiZGVmIjoid2FsayB1cyB0aHJvdWdoIHRoZSBHZXJtYW55IHN0cmF0ZWd5LiJ9LHsidGVybSI6IvCfp5Twn4+74oCN4pmC77iPIEd1czogRmlyc3QiLCJkZWYiOiJ3ZSdsbCAqKnRhcmdldCoqIHByZW1pdW0gZGVhbGVycyBpbiBNdW5pY2ggYW5kIEhhbWJ1cmcgZHVyaW5nIFEyLiJ9LHsidGVybSI6IvCfp5Twn4+74oCN4pmC77iPIEd1czogVGhlbiIsImRlZiI6IndlJ2xsICoqZXhwYW5kKiogdG8gRnJhbmtmdXJ0IGFuZCBCZXJsaW4gaW4gUTMuIFdlJ3JlIHByb2plY3Rpbmcgcm91Z2hseSAyNSBkZWFsZXJzICoqYnkgeWVhci1lbmQqKi4ifSx7InRlcm0iOiLwn6eU8J+Pu+KAjeKZgu+4jyBHdXM6IEFmdGVyIHRoYXQiLCJkZWYiOiJ3ZSdsbCBpbnRyb2R1Y2Ugb3VyIGUtYmlrZSByYW5nZSB0byBjYXB0dXJlIHRoZSAqKmNvbW11dGVyIHNlZ21lbnQqKi4ifSx7InRlcm0iOiLwn6eU8J+Pu+KAjeKZgu+4jyBHdXM6IEZpbmFsbHkiLCJkZWYiOiJ3ZSdsbCBhc3Nlc3Mgc21hbGxlciBjaXRpZXMgaW4geWVhciB0d28gKipiYXNlZCBvbioqIHBlcmZvcm1hbmNlLiJ9LHsidGVybSI6Ikd1cyBwcmVzZW50cyBCZXJyaWEncyBHZXJtYW4gbWFya2V0IGVudHJ5IHN0cmF0ZWd5IHRvIHRoZSBDRU8uIFRoZSBtYXJrZXQgZW50cnkgZm9sbG93cyBhIF9fXygxKV9fXyBhcHByb2FjaC4gRmlyc3QiLCJkZWYiOiJ0aGV5J2xsIF9fXygyKV9fXyBwcmVtaXVtIGRlYWxlcnMgaW4gTXVuaWNoIGFuZCBIYW1idXJnIGR1cmluZyBRMi4gVGhlbiwgdGhleSdsbCBfX18oMylfX18gdG8gRnJhbmtmdXJ0IGFuZCBCZXJsaW4gaW4gUTMsIHByb2plY3Rpbmcgcm91Z2hseSAyNSBkZWFsZXJzIF9fXyg0KV9fXy4gQWZ0ZXIgdGhhdCwgdGhleSdsbCBpbnRyb2R1Y2UgdGhlaXIgZS1iaWtlIHJhbmdlIHRvIGNhcHR1cmUgdGhlIF9fXyg1KV9fXy4gRmluYWxseSwgdGhleSdsbCBhc3Nlc3Mgc21hbGxlciBjaXRpZXMgaW4geWVhciB0d28gX19fKDYpX19fIHBlcmZvcm1hbmNlLiBHdXMgaGFzIF9fXyg3KV9fXyBmbGV4aWJpbGl0eSBfX18oOClfX18gdGhlIHRpbWVsaW5lIHRvIGFkanVzdCB0aGVpciBhcHByb2FjaCBpZiBjb21wZXRpdG9ycyByZXNwb25kIGFnZ3Jlc3NpdmVseS4ifSx7InRlcm0iOiJGaXJzdCIsImRlZiI6IndlJ2xsIHRhcmdldCBwcmVtaXVtIGRlYWxlcnMgaW4gTXVuaWNoIGFuZCBIYW1idXJnIGR1cmluZyBRMi4ifSx7InRlcm0iOiJbXUZpcnN0IiwiZGVmIjoid2UnbGwgbGF1bmNoIHNvY2lhbCBtZWRpYSBhZHMuIFRoZW4sIHdlJ2xsIGNvbnRhY3QgaW5mbHVlbmNlcnMuIEFmdGVyIHRoYXQsIHdlJ2xsIHJ1biB0aGUgVFYgY2FtcGFpZ24uIEZpbmFsbHksIHdlJ2xsIG1lYXN1cmUgcmVzdWx0cy4ifSx7InRlcm0iOiJbXUZpcnN0IHdlIGxhdW5jaCBzb2NpYWwgbWVkaWEgYWRzIiwiZGVmIjoidGhlbiBjb250YWN0IGluZmx1ZW5jZXJzLCBhZnRlciB0aGF0IHJ1biBUViBjYW1wYWlnbiwgZmluYWxseSBtZWFzdXJlIHJlc3VsdHMuIn0seyJ0ZXJtIjoiRmlyc3QiLCJkZWYiOiJ3ZSdsbCBsYXVuY2ggc29jaWFsIG1lZGlhIGFkcy4gVGhlbiwgd2UnbGwgY29udGFjdCBpbmZsdWVuY2Vycy4gQWZ0ZXIgdGhhdCwgd2UnbGwgcnVuIHRoZSBUViBjYW1wYWlnbi4gRmluYWxseSwgd2UnbGwgbWVhc3VyZSByZXN1bHRzLl1dIn0seyJ0ZXJtIjoiRmlyc3QiLCJkZWYiOiJ3ZSdsbCBwaWxvdCB0ZXN0IHRoZSBwcm9ncmFtLiBUaGVuLCB3ZSdsbCBleHBhbmQuXV0ifSx7InRlcm0iOiJfX18iLCJkZWYiOiJ3ZSdsbCByZXNlYXJjaCB0aGUgbWFya2V0LiBfX18sIHdlJ2xsIGNvbnRhY3QgZGlzdHJpYnV0b3JzLiBfX18gX19fLCB3ZSdsbCBuZWdvdGlhdGUgdGVybXMuIn0seyJ0ZXJtIjoiRmlyc3QiLCJkZWYiOiJ3ZSdsbCByZXNlYXJjaCB0aGUgbWFya2V0LiBUaGVuLCB3ZSdsbCBjb250YWN0IGRpc3RyaWJ1dG9ycy4gQWZ0ZXIgdGhhdCwgd2UnbGwgbmVnb3RpYXRlIHRlcm1zLl1dIn0seyJ0ZXJtIjoiRmlyc3QiLCJkZWYiOiJ3ZSdsbCBsYXVuY2ggaW4gRnJhbmNlLiBUaGVuLCB3ZSdsbCBlbnRlciBTcGFpbi4gQWZ0ZXIgdGhhdCwgd2UnbGwgYXNzZXNzIHRoZSByZXN1bHRzLiBGaW5hbGx5LCB3ZSdsbCBleHBhbmQgdG8gSXRhbHkuIn0seyJ0ZXJtIjoiRmlyc3QiLCJkZWYiOiJ3ZSdsbCBoaXJlIGEgdGVhbS4gVGhlbiwgd2UnbGwgdHJhaW4gdGhlbS4gQWZ0ZXIgdGhhdCwgd2UnbGwgYXNzaWduIHRlcnJpdG9yaWVzLiBGaW5hbGx5LCB3ZSdsbCBzdGFydCBzZWxsaW5nLiJ9LHsidGVybSI6IkZpcnN0IiwiZGVmIjoid2UnbGwgZGVzaWduIHRoZSBwcm9kdWN0LiBUaGVuLCB3ZSdsbCB0ZXN0IGl0LiBBZnRlciB0aGF0LCB3ZSdsbCBnZXQgZmVlZGJhY2suIEZpbmFsbHksIHdlJ2xsIGxhdW5jaCBpdC5dXSJ9LHsidGVybSI6IlNlcXVlbmNlIHdvcmRzIChmaXJzdCIsImRlZiI6InRoZW4sIGFmdGVyIHRoYXQsIGZpbmFsbHkpIGZvciBwcmVzZW50YXRpb25zXV0ifSx7InRlcm0iOiJwaGFzZWQiLCJkZWYiOiJzdGVwLWJ5LXN0ZXAsIGluIHN0YWdlcyJ9LHsidGVybSI6InRhcmdldCIsImRlZiI6ImZvY3VzIG9uLCBhaW0gZm9yIn0seyJ0ZXJtIjoiZXhwYW5kIiwiZGVmIjoiZ3JvdywgZXh0ZW5kIn0seyJ0ZXJtIjoiYnkgeWVhci1lbmQiLCJkZWYiOiJiZWZvcmUgdGhlIGVuZCBvZiB0aGUgeWVhciJ9LHsidGVybSI6ImNvbW11dGVyIHNlZ21lbnQiLCJkZWYiOiJwZW9wbGUgd2hvIGJpa2UgdG8gd29yayJ9LHsidGVybSI6ImJhc2VkIG9uIiwiZGVmIjoiZGVwZW5kaW5nIG9uLCBhY2NvcmRpbmcgdG8ifSx7InRlcm0iOiJidWlsdCBpbnRvIiwiZGVmIjoiaW5jbHVkZWQgaW4sIGluY29ycG9yYXRlZCBpbiJ9XQ==",
+      "flashcardUrl": "https://nicc122.github.io/flashcards/flashcards.html?data=W3sidGVybSI6InBoYXNlZCIsImRlZiI6InN0ZXAtYnktc3RlcCwgaW4gc3RhZ2VzIHRhcmdldCwgZm9jdXMgb24sIGFpbSBmb3IgZXhwYW5kLCBncm93LCBleHRlbmQgYnkgeWVhci1lbmQsIGJlZm9yZSB0aGUgZW5kIG9mIHRoZSB5ZWFyIGNvbW11dGVyIHNlZ21lbnQsIHBlb3BsZSB3aG8gYmlrZSB0byB3b3JrIGJhc2VkIG9uLCBkZXBlbmRpbmcgb24sIGFjY29yZGluZyB0byBidWlsdCBpbnRvLCBpbmNsdWRlZCBpbiwgaW5jb3Jwb3JhdGVkIGluIn1d",
       "vocab": [
         {
-          "term": "👩‍🦰 CEO: Gus",
-          "def": "walk us through the Germany strategy."
-        },
-        {
-          "term": "🧔🏻‍♂️ Gus: First",
-          "def": "we'll **target** premium dealers in Munich and Hamburg during Q2."
-        },
-        {
-          "term": "🧔🏻‍♂️ Gus: Then",
-          "def": "we'll **expand** to Frankfurt and Berlin in Q3. We're projecting roughly 25 dealers **by year-end**."
-        },
-        {
-          "term": "🧔🏻‍♂️ Gus: After that",
-          "def": "we'll introduce our e-bike range to capture the **commuter segment**."
-        },
-        {
-          "term": "🧔🏻‍♂️ Gus: Finally",
-          "def": "we'll assess smaller cities in year two **based on** performance."
-        },
-        {
-          "term": "Gus presents Berria's German market entry strategy to the CEO. The market entry follows a ___(1)___ approach. First",
-          "def": "they'll ___(2)___ premium dealers in Munich and Hamburg during Q2. Then, they'll ___(3)___ to Frankfurt and Berlin in Q3, projecting roughly 25 dealers ___(4)___. After that, they'll introduce their e-bike range to capture the ___(5)___. Finally, they'll assess smaller cities in year two ___(6)___ performance. Gus has ___(7)___ flexibility ___(8)___ the timeline to adjust their approach if competitors respond aggressively."
-        },
-        {
-          "term": "First",
-          "def": "we'll target premium dealers in Munich and Hamburg during Q2."
-        },
-        {
-          "term": "[]First",
-          "def": "we'll launch social media ads. Then, we'll contact influencers. After that, we'll run the TV campaign. Finally, we'll measure results."
-        },
-        {
-          "term": "[]First we launch social media ads",
-          "def": "then contact influencers, after that run TV campaign, finally measure results."
-        },
-        {
-          "term": "First",
-          "def": "we'll launch social media ads. Then, we'll contact influencers. After that, we'll run the TV campaign. Finally, we'll measure results.]]"
-        },
-        {
-          "term": "First",
-          "def": "we'll pilot test the program. Then, we'll expand.]]"
-        },
-        {
-          "term": "___",
-          "def": "we'll research the market. ___, we'll contact distributors. ___ ___, we'll negotiate terms."
-        },
-        {
-          "term": "First",
-          "def": "we'll research the market. Then, we'll contact distributors. After that, we'll negotiate terms.]]"
-        },
-        {
-          "term": "First",
-          "def": "we'll launch in France. Then, we'll enter Spain. After that, we'll assess the results. Finally, we'll expand to Italy."
-        },
-        {
-          "term": "First",
-          "def": "we'll hire a team. Then, we'll train them. After that, we'll assign territories. Finally, we'll start selling."
-        },
-        {
-          "term": "First",
-          "def": "we'll design the product. Then, we'll test it. After that, we'll get feedback. Finally, we'll launch it.]]"
-        },
-        {
-          "term": "Sequence words (first",
-          "def": "then, after that, finally) for presentations]]"
-        },
-        {
           "term": "phased",
-          "def": "step-by-step, in stages"
-        },
-        {
-          "term": "target",
-          "def": "focus on, aim for"
-        },
-        {
-          "term": "expand",
-          "def": "grow, extend"
-        },
-        {
-          "term": "by year-end",
-          "def": "before the end of the year"
-        },
-        {
-          "term": "commuter segment",
-          "def": "people who bike to work"
-        },
-        {
-          "term": "based on",
-          "def": "depending on, according to"
-        },
-        {
-          "term": "built into",
-          "def": "included in, incorporated in"
+          "def": "step-by-step, in stages target, focus on, aim for expand, grow, extend by year-end, before the end of the year commuter segment, people who bike to work based on, depending on, according to built into, included in, incorporated in"
         }
       ]
     },
