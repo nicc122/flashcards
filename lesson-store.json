@@ -544,19 +544,6 @@
       ]
     },
     {
-      "sessionId": "2026-03-25T18:02:20.261Z",
-      "student": "CMOcycL2",
-      "lessonNum": 4,
-      "audioPath": "/Users/nick/Documents/GitHub/lessongen/audio_output/CMOcycL2_lesson4_complete.mp3",
-      "flashcardUrl": "https://nicc122.github.io/flashcards/flashcards.html?data=W3sidGVybSI6InBoYXNlZCIsImRlZiI6InN0ZXAtYnktc3RlcCwgaW4gc3RhZ2VzIHRhcmdldCwgZm9jdXMgb24sIGFpbSBmb3IgZXhwYW5kLCBncm93LCBleHRlbmQgYnkgeWVhci1lbmQsIGJlZm9yZSB0aGUgZW5kIG9mIHRoZSB5ZWFyIGNvbW11dGVyIHNlZ21lbnQsIHBlb3BsZSB3aG8gYmlrZSB0byB3b3JrIGJhc2VkIG9uLCBkZXBlbmRpbmcgb24sIGFjY29yZGluZyB0byBidWlsdCBpbnRvLCBpbmNsdWRlZCBpbiwgaW5jb3Jwb3JhdGVkIGluIn1d",
-      "vocab": [
-        {
-          "term": "phased",
-          "def": "step-by-step, in stages target, focus on, aim for expand, grow, extend by year-end, before the end of the year commuter segment, people who bike to work based on, depending on, according to built into, included in, incorporated in"
-        }
-      ]
-    },
-    {
       "sessionId": "2026-03-26T11:42:10.248Z",
       "student": "COOvetL2",
       "lessonNum": 11,
